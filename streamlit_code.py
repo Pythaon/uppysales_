@@ -29,8 +29,6 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
         #events = chargement()
         
         
-
-        
         
 if page == 'Segmentation visiteurs':
         
