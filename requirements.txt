@@ -5,4 +5,4 @@ pandas
 numpy
 scikit-learn
 scipy
-pillo
+pillow
