@@ -5,4 +5,3 @@ time
 matplotlib.pyplot
 seaborn
 streamlit
-PIL
