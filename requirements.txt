@@ -1,6 +1,9 @@
-pandas
-numpy
 datetime 
 matplotlib.pyplot
 seaborn
 streamlit
+pandas
+numpy
+scikit-learn
+scipy
+pillow
