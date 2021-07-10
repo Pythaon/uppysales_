@@ -45,8 +45,8 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
 
 if page == 'Présentation':
 
-    url = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
-    image = Image.open(requests.get(url, stream=True).raw, weight=200)
+    urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
+    image = Image.open(requests.get(urllogo, stream=True).raw)
     
     st.image(image)
     
@@ -65,8 +65,12 @@ if page == 'Présentation':
              
              """)
              
-               
-    #st.dataframe(events.head())
+    url_events="http://spowls.net:449/projet/datasets/events.csv"
+    s_events=requests.get(url_events).content
+    
+    events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
+    
+    st.dataframe(events.head())
     
     st.write(""" 
              
