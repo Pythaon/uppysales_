@@ -60,11 +60,8 @@ if page == 'Présentation':
              """)
     
     ### -- 
-    st.write("""
-             
-            ##La table principale est la table event:
-             
-             """)
+    st.subheader("""La table principale est la table event:""") 
+
     st.dataframe(events.head())
     
     st.write(""" 
@@ -75,10 +72,11 @@ if page == 'Présentation':
              
              """)
    
-    plt.figure(figsize=(4,3))         
+        
     fig, ax = plt.subplots()
     sns.countplot(df_all['event'], ax=ax)
     st.pyplot(fig)
+    plt.figure(figsize=(4,3)) 
     
     ### -- 
     
@@ -90,11 +88,8 @@ if page == 'Présentation':
              """)
    
   
-    st.write("""
-             
-            ##La table ci-dessous est un sample random de 30% du dataset principal retravaillé 
-             
-             """)
+    st.subheader("""La table ci-dessous est un sample random de 30% du dataset principal retravaillé""") 
+
     
     st.dataframe(df_all.head())
     
