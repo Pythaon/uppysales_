@@ -35,14 +35,13 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
 #df_all=pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\df_all.csv')
 
 
-url="http://spowls.net:449/projet/datasets/events.csv"
-s=requests.get(url).content
-events=pd.read_csv(io.StringIO(s.decode('utf-8')))
+#url="http://spowls.net:449/projet/datasets/events.csv"
+#s=requests.get(url).content
+#events=pd.read_csv(io.StringIO(s.decode('utf-8')))
 
-url1="http://spowls.net:449/projet/datasets/df_all.csv"
-s=requests.get(url1).content
-df_all=pd.read_csv(io.StringIO(s.decode('utf-8')))
-
+#url1="http://spowls.net:449/projet/datasets/df_all.csv"
+#s1=requests.get(url1).content
+#df_all=pd.read_csv(io.StringIO(s1.decode('utf-8')))
 
 
 if page == 'Présentation':
