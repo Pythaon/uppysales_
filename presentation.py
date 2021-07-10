@@ -21,7 +21,7 @@ import os
 
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
                                   'Clustering'])
-
+#https://drive.google.com/file/d/16UMBy5uEr9c-Xa2lX0C5XG93jmnccPMC/view?usp=sharing
 
 @st.cache
 def load_data1():
@@ -30,11 +30,16 @@ def load_data1():
     events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
     return events
 
-@st.cache
+## Df_all sample random 30% 
+  @st.cache
 def load_data2():
-    url_dfall="http://spowls.net:449/projet/datasets/category_tree.csv"
-    s_dfall=requests.get(url_dfall).content
-    df_all=pd.read_csv(io.StringIO(s_dfall.decode('utf-8')))
+  url_df_all_sample30='https://drive.google.com/file/d/1DqXMIdU912x0h_f9W9Tk5ZdcYEIzwQ4l/view?usp=sharing'
+
+  file_id = url_df_all_sample30.split('/')[-2]
+  dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
+  url2 = requests.get(dwn_url).text
+  csv_raw = StringIO(url2)
+  df_all = pd.read_csv(csv_raw)
     return df_all
   
 events = load_data1()
