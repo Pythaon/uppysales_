@@ -458,15 +458,6 @@ if page =='Clustering':
         
            
                 
-                
-        
-        
-if page == 'test':
-    
-    fig, ax = plt.subplots()
-    sns.countplot(df_all['ev_view'], ax=ax)
-    st.pyplot(fig)
-    
     
 
     
