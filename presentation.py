@@ -39,9 +39,9 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
 #s=requests.get(url).content
 #events=pd.read_csv(io.StringIO(s.decode('utf-8')))
 
-url1="http://spowls.net:449/projet/datasets/df_all.csv"
-s1=requests.get(url1).content
-df_all=pd.read_csv(io.StringIO(s1.decode('utf-8')))
+#url1="http://spowls.net:449/projet/datasets/df_all.csv"
+#s1=requests.get(url1).content
+#df_all=pd.read_csv(io.StringIO(s1.decode('utf-8')))
 
 
 if page == 'Présentation':
@@ -67,7 +67,7 @@ if page == 'Présentation':
              """)
              
                
-    st.dataframe(events.head())
+    #st.dataframe(events.head())
     
     st.write(""" 
              
@@ -76,9 +76,9 @@ if page == 'Présentation':
              
              """)
              
-    fig, ax = plt.subplots()
-    sns.countplot(df_all['event'], ax=ax)
-    st.pyplot(fig)
+    #fig, ax = plt.subplots()
+    #sns.countplot(df_all['event'], ax=ax)
+    #st.pyplot(fig)
     
     st.write(""" 
              
@@ -86,7 +86,7 @@ if page == 'Présentation':
            (ex :durées entre les évènements de vue, mise au panier, achat, prix, disponibilité des items).
              
              """)
-    st.dataframe (df_all.head())
+    #st.dataframe (df_all.head())
     
     
    
