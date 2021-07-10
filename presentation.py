@@ -47,9 +47,9 @@ url_events="http://spowls.net:449/projet/datasets/events.csv"
 s_events=requests.get(url_events).content 
 events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
 ### IMPORT DATA DF_ALL  
-#url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
-#s_df_all=requests.get(url_df_all).content
-#df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
+url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
+s_df_all=requests.get(url_df_all).content
+df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
 
 if page == 'Présentation':
     ### LOGO
