@@ -22,6 +22,23 @@ import os
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
                                   'Clustering'])
 
+###TEST
+DATE_COLUMN = 'timestamp'
+DATA_URL = ('http://spowls.net:449/projet/datasets/item_properties_part1.csv')
+
+@st.cache
+def load_data(nrows):
+    data = pd.read_csv(DATA_URL, nrows=nrows)
+    lowercase = lambda x: str(x).lower()
+    data.rename(lowercase, axis='columns', inplace=True)
+    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
+    return data
+
+data_load_state = st.text('Loading data...')
+data = load_data(10000)
+data_load_state.text("Done! (using st.cache)")
+
+##TEST
 
 
 @st.cache
@@ -31,15 +48,15 @@ def load_data1():
     events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
     return events
 
-@st.cache
-def load_data2():
-    url_dfall="http://spowls.net:449/projet/datasets/df_all.csv"
-    s_dfall=requests.get(url_dfall).content
-    df_all=pd.read_csv(io.StringIO(s_dfall.decode('utf-8')))
-    return df_all
+#@st.cache
+#def load_data2():
+    #url_dfall="http://spowls.net:449/projet/datasets/df_all.csv"
+    #s_dfall=requests.get(url_dfall).content
+    #df_all=pd.read_csv(io.StringIO(s_dfall.decode('utf-8')))
+    #return df_all
   
 events = load_data1()
-df_all = load_data2()
+#df_all = load_data2()
 
 
 if page == 'Présentation':
@@ -89,7 +106,7 @@ if page == 'Présentation':
              
              """)
     
-    st.dataframe(df_all.head())
+    #st.dataframe(df_all.head())
     
     
    
