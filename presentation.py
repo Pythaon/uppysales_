@@ -14,6 +14,10 @@ import seaborn as sns
 import streamlit as st
 from PIL import Image
 
+import requests
+import io
+from io import StringIO
+
 
 
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
@@ -27,8 +31,19 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
    
 #events = chargement()
 
-events = pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\events.csv')
-df_all=pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\df_all.csv')
+#events = pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\events.csv')
+#df_all=pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\df_all.csv')
+
+
+url="http://spowls.net:449/projet/datasets/events.csv"
+s=requests.get(url).content
+events=pd.read_csv(io.StringIO(s.decode('utf-8')))
+
+url1="http://spowls.net:449/projet/datasets/df_all.csv"
+s=requests.get(url1).content
+df_all=pd.read_csv(io.StringIO(s.decode('utf-8')))
+
+
 
 if page == 'Présentation':
     
