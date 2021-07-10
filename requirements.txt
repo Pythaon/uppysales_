@@ -7,4 +7,3 @@ scikit-learn
 scipy
 pillow
 requests
-StringIO
