@@ -36,7 +36,7 @@ def load_data1():
     url_df_all="http://spowls.net:449/projet/datasets/df_all_sample30.csv"
     s_df_all=requests.get(url_df_all).content 
     df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
-    return events
+    return df_all
   
 events = load_data1()
 df_all = load_data2()
