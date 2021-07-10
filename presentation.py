@@ -75,7 +75,7 @@ if page == 'Présentation':
              
              """)
    
-    plt.figure(figsize=(8,6))         
+    plt.figure(figsize=(4,3))         
     fig, ax = plt.subplots()
     sns.countplot(df_all['event'], ax=ax)
     st.pyplot(fig)
