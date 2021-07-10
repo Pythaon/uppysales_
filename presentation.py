@@ -19,7 +19,6 @@ import io
 from io import StringIO
 
 
-
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
                                   'Clustering', 'test'])
 
@@ -45,9 +44,9 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
 
 
 if page == 'Présentation':
-    
-    
-    image = Image.open(r'https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png')
+
+
+    image = Image.open(requests.get(https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png, stream=True).raw)
     
     st.image(image)
     
