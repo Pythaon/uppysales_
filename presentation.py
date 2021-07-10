@@ -31,7 +31,7 @@ def load_data1():
     return events
 
 ## Df_all sample random 30% 
-  @st.cache
+@st.cache
 def load_data2():
     url_df_all_sample30='https://drive.google.com/file/d/1DqXMIdU912x0h_f9W9Tk5ZdcYEIzwQ4l/view?usp=sharing'
 
