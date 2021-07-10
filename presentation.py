@@ -92,7 +92,7 @@ if page == 'Présentation':
 
     
 
-    def explore(df_all)...
+    def explore(df_all)
     def transform(df_all):
     # Select sample size
     frac = st.slider('Random sample (%)', 1, 100, 100)
@@ -104,7 +104,7 @@ if page == 'Présentation':
                         v.columns.tolist())
       df_all = df_all[cols]
         return df_all
-    def get_df(file)...
+    def get_df(file)
     
     def main():
       st.title('Explore a dataset')
