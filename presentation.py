@@ -17,27 +17,37 @@ from PIL import Image
 import requests
 import io
 from io import StringIO
-
+import os
 
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
                                   'Clustering'])
 
-#@st.cache
-#def load_data1():
-    #url_events="http://spowls.net:449/projet/datasets/events.csv"
-    #s_events=requests.get(url_events).content 
-    #events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
-    #return events
+
+def file_selector(folder_path='.'):
+    filenames = os.listdir(folder_path)
+    selected_filename = st.selectbox('Select a file', filenames)
+    return os.path.join(folder_path, selected_filename)
+
+filename = file_selector()
+st.write('You selected `%s`' % filename)
+
 
 @st.cache
-def load_data2():
-    url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
-    s_df_all=requests.get(url_df_all).content
-    df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
-    return df_all
+def load_data1():
+    url_events="http://spowls.net:449/projet/datasets/events.csv"
+    s_events=requests.get(url_events).content 
+    events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
+    return events
+
+#@st.cache
+#def load_data2():
+    #url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
+    #s_df_all=requests.get(url_df_all).content
+    #df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
+    #return df_all
   
-#events = load_data1()
-df_all = load_data2()
+events = load_data1()
+#df_all = load_data2()
 
 
 if page == 'Présentation':
