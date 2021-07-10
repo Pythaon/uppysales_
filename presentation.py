@@ -46,8 +46,7 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
 if page == 'Présentation':
 
     url = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
-    image = Image.open(requests.get(url, stream=True).raw)
-    width, height = im.size
+    image = Image.open(requests.get(url, stream=True).raw, weight=200)
     
     st.image(image)
     
