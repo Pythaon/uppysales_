@@ -31,19 +31,18 @@ def load_data1():
     return events
 
 ## Df_all sample random 30% 
-@st.cache
-def load_data2():
-    url_df_all_sample30='https://drive.google.com/file/d/1DqXMIdU912x0h_f9W9Tk5ZdcYEIzwQ4l/view?usp=sharing'
-
-    file_id = url_df_all_sample30.split('/')[-2]
-    dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
-    url2 = requests.get(dwn_url).text
-    csv_raw = StringIO(url2)
-    df_all = pd.read_csv(csv_raw)
-    return df_all
+#@st.cache
+#def load_data2():
+url_df_all_sample30='https://drive.google.com/file/d/1DqXMIdU912x0h_f9W9Tk5ZdcYEIzwQ4l/view?usp=sharing'
+file_id = url_df_all_sample30.split('/')[-2]
+dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
+url2 = requests.get(dwn_url).text
+csv_raw = StringIO(url2)
+df_all = pd.read_csv(csv_raw)
+    #return df_all
   
 events = load_data1()
-df_all = load_data2()
+#df_all = load_data2()
 
 
 if page == 'Présentation':
