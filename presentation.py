@@ -21,7 +21,6 @@ import os
 
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
                                   'Clustering'])
-#https://drive.google.com/file/d/16UMBy5uEr9c-Xa2lX0C5XG93jmnccPMC/view?usp=sharing
 
 @st.cache
 def load_data1():
@@ -32,7 +31,7 @@ def load_data1():
 
 ## Df_all sample random 30% 
 @st.cache
-def load_data1():
+def load_data2():
     url_df_all="http://spowls.net:449/projet/datasets/df_all_sample30.csv"
     s_df_all=requests.get(url_df_all).content 
     df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
