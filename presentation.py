@@ -60,7 +60,7 @@ if page == 'Présentation':
              """)
     
     ### -- 
-        st.write("""
+    st.write("""
              
             ##La table principale est la table event:
              
