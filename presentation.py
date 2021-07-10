@@ -95,7 +95,7 @@ if page == 'Présentation':
              
              """)
     
-    st.dataframe (df_all.head(5))
+    st.dataframe(df_all.head(5))
     
     
    
