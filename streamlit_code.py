@@ -6,8 +6,6 @@ Created on Fri Jul  9 22:09:17 2021
 @author: lara
 """
 
-#!pip install streamlit
-
 import pandas as pd
 import numpy as np
 import datetime 
@@ -17,7 +15,8 @@ import seaborn as sns
 import streamlit as st
 from PIL import Image
 
-
+import requests
+from io import StringIO
 
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 'Segmentation produits',
                                           'Clustering', 'test'])
@@ -59,9 +58,15 @@ if page == 'Segmentation visiteurs':
             ● M - Monetary : Montant des transactions s’il y en a eu
         
         """)
-        chemin = r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\events.csv'
         
-        df_all=pd.read_csv(chemin)
+        url='https://drive.google.com/file/d/1DqXMIdU912x0h_f9W9Tk5ZdcYEIzwQ4l/view?usp=sharing'
+
+        file_id = url.split('/')[-2]
+        dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
+        url2 = requests.get(dwn_url).text
+        csv_raw = StringIO(url2)
+        df_all = pd.read_csv(csv_raw)
+        
         @st.cache
         def seg_vis(df_all):
         
