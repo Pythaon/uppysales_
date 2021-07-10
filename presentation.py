@@ -88,39 +88,9 @@ if page == 'Présentation':
              """)
    
   
-    st.subheader("""La table ci-dessous est un sample random de 30% du dataset principal retravaillé""") 
-
+    st.subheader("""La table ci-dessous est un sample random de 30% du dataset principal retravaillé""")   
     
-
-    def explore(df_all)
-    def transform(df_all):
-    # Select sample size
-    frac = st.slider('Random sample (%)', 1, 100, 100)
-    if frac < 100:
-      df_all = df_all.sample(frac=frac/100)
-      # Select columns
-      cols = st.multiselect('Columns', 
-                        df_all.columns.tolist(),
-                        v.columns.tolist())
-      df_all = df_all[cols]
-        return df_all
-    def get_df(file)
-    
-    def main():
-      st.title('Explore a dataset')
-      st.write('A general purpose data exploration app')
-      file = st.file_uploader("Upload file", type=['csv'])
-      if not file:
-        st.write("Upload a .csv or .xlsx file to get started")
-          return
-        
-    df_all = get_df(file)
-    df_all = transform(df_all)
-    explore(df_all)
-    main()
-    
-    
-    #st.dataframe(df_all.head())
+    st.dataframe(df_all.head())
     
     
    
