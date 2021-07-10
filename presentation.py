@@ -20,44 +20,14 @@ from io import StringIO
 
 
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
-                                  'Clustering', 'test'])
+                                  'Clustering'])
 
 #@st.cache
-
-#def chargement ():
-    #df_all=pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\df_all.csv')
-     #return pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\events.csv')
-   
-#events = chargement()
-
-#events = pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\events.csv')
-#df_all=pd.read_csv(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\Dataset\df_all.csv')
-
-
-#url="http://spowls.net:449/projet/datasets/events.csv"
-#s=requests.get(url).content
-#events=pd.read_csv(io.StringIO(s.decode('utf-8')))
-
-#url1="http://spowls.net:449/projet/datasets/df_all.csv"
-#s1=requests.get(url1).content
-#df_all=pd.read_csv(io.StringIO(s1.decode('utf-8')))
-
-### IMPORT DATA EVENTS     
-#url_events="http://spowls.net:449/projet/datasets/events.csv"
-#s_events=requests.get(url_events).content 
-#events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
-### IMPORT DATA DF_ALL  
-#url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
-#s_df_all=requests.get(url_df_all).content
-#df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
-
-
-@st.cache
-def load_data1():
-    url_events="http://spowls.net:449/projet/datasets/events.csv"
-    s_events=requests.get(url_events).content 
-    events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
-    return events
+#def load_data1():
+    #url_events="http://spowls.net:449/projet/datasets/events.csv"
+    #s_events=requests.get(url_events).content 
+    #events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
+    #return events
 
 @st.cache
 def load_data2():
@@ -66,7 +36,7 @@ def load_data2():
     df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
     return df_all
   
-events = load_data1()
+#events = load_data1()
 df_all = load_data2()
 
 
