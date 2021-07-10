@@ -44,7 +44,7 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
 
 
 if page == 'Présentation':
-
+    ### LOGO
     urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
     image = Image.open(requests.get(urllogo, stream=True).raw)
     
@@ -55,7 +55,7 @@ if page == 'Présentation':
              
     st.write(""" 
              
-             Le jeu de données est un journal d'activité, il contient donc des timestamps, des actions des
+            Le jeu de données est un journal d'activité, il contient donc des timestamps, des actions des
             visiteurs sur le site pendant 139 jours.
             Nous connaissons l'activité des visiteurs: l’article (itemid) visité, le/les mis au panier, ou
             acheté(s), le prix de l'item et sa disponibilité.
@@ -64,11 +64,16 @@ if page == 'Présentation':
              La table principale est la table event:
              
              """)
-             
+    ### IMPORT DATA EVENTS     
     url_events="http://spowls.net:449/projet/datasets/events.csv"
-    s_events=requests.get(url_events).content
-    
+    s_events=requests.get(url_events).content 
     events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
+    ### IMPORT DATA DF_ALL  
+    url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
+    s_df_all=requests.get(url_df_all).content
+    df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
+    
+    ### -- 
     
     st.dataframe(events.head())
     
@@ -78,15 +83,13 @@ if page == 'Présentation':
              données es déséquilibré sur la variable **transactionid** avec moins de 1% des enregistrements qui concernent des transactions
              
              """)
-    
-    url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
-    s_df_all=requests.get(url_df_all).content
-    
-    df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
+   
              
     #fig, ax = plt.subplots()
     #sns.countplot(df_all['event'], ax=ax)
     #st.pyplot(fig)
+    
+    ### -- 
     
     st.write(""" 
              
@@ -95,7 +98,7 @@ if page == 'Présentation':
              
              """)
     
-    st.dataframe(df_all.head(5))
+    st.dataframe(df_all.head())
     
     
    
