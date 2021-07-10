@@ -32,7 +32,7 @@ def load_data1():
 
 @st.cache
 def load_data2():
-    url_dfall="http://spowls.net:449/projet/datasets/item_properties_part1.csv"
+    url_dfall="http://spowls.net:449/projet/datasets/category_tree.csv"
     s_dfall=requests.get(url_dfall).content
     df_all=pd.read_csv(io.StringIO(s_dfall.decode('utf-8')))
     return df_all
@@ -88,7 +88,7 @@ if page == 'Présentation':
              
              """)
     
-    #st.dataframe(df_all.head())
+    st.dataframe(df_all.head())
     
     
    
