@@ -39,15 +39,15 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
 #s=requests.get(url).content
 #events=pd.read_csv(io.StringIO(s.decode('utf-8')))
 
-#url1="http://spowls.net:449/projet/datasets/df_all.csv"
-#s1=requests.get(url1).content
-#df_all=pd.read_csv(io.StringIO(s1.decode('utf-8')))
+url1="http://spowls.net:449/projet/datasets/df_all.csv"
+s1=requests.get(url1).content
+df_all=pd.read_csv(io.StringIO(s1.decode('utf-8')))
 
 
 if page == 'Présentation':
     
     
-    image = Image.open(r'C:\Users\Utilisateur\Documents\Data scientest\Projet\uppysales.jpg')
+    image = Image.open(r'https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png')
     
     st.image(image)
     
