@@ -81,11 +81,12 @@ if page == 'Présentation':
     
     url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
     s_df_all=requests.get(url_df_all).content
+    
     df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
              
-    fig, ax = plt.subplots()
-    sns.countplot(df_all['event'], ax=ax)
-    st.pyplot(fig)
+    #fig, ax = plt.subplots()
+    #sns.countplot(df_all['event'], ax=ax)
+    #st.pyplot(fig)
     
     st.write(""" 
              
@@ -94,7 +95,7 @@ if page == 'Présentation':
              
              """)
     
-    st.dataframe (df_all.head())
+    st.dataframe (df_all.head(5))
     
     
    
