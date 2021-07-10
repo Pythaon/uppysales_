@@ -87,7 +87,7 @@ if page == 'Présentation':
     
     ### -- 
     
-    #st.dataframe(events.head())
+    st.dataframe(events.head())
     
     st.write(""" 
              
