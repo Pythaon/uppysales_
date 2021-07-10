@@ -90,13 +90,13 @@ if page == 'Présentation':
              """)
    
   
-     st.write("""
+    st.write("""
              
             ##La table ci-dessous est un sample random de 30% du dataset principal retravaillé 
              
              """)
     
-     st.dataframe(df_all.head())
+    st.dataframe(df_all.head())
     
     
    
