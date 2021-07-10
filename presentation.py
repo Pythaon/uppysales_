@@ -43,13 +43,25 @@ page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation
 #df_all=pd.read_csv(io.StringIO(s1.decode('utf-8')))
 
 ### IMPORT DATA EVENTS     
-#url_events="http://spowls.net:449/projet/datasets/events.csv"
-#s_events=requests.get(url_events).content 
-#events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
+url_events="http://spowls.net:449/projet/datasets/events.csv"
+s_events=requests.get(url_events).content 
+events=pd.read_csv(io.StringIO(s_events.decode('utf-8')))
 ### IMPORT DATA DF_ALL  
-url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
-s_df_all=requests.get(url_df_all).content
-df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
+#url_df_all="http://spowls.net:449/projet/datasets/df_all.csv"
+#s_df_all=requests.get(url_df_all).content
+#df_all=pd.read_csv(io.StringIO(s_df_all.decode('utf-8')))
+
+###TEST
+url1='https://drive.google.com/file/d/1DqXMIdU912x0h_f9W9Tk5ZdcYEIzwQ4l/view?usp=sharing'
+
+file_id = url1.split('/')[-2]
+dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
+url2 = requests.get(dwn_url).text
+csv_raw = StringIO(url2)
+df_all = pd.read_csv(csv_raw)
+
+
+
 
 if page == 'Présentation':
     ### LOGO
