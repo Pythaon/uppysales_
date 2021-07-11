@@ -17,8 +17,18 @@ import io
 from io import StringIO
 import os
 
+icon = Image.open("icon.png")
+st.set_page_config(
+    page_title="UpPySales App",
+    page_icon=icon,
+    layout="centered",
+    initial_sidebar_state="auto",
+)
+
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
                                   'Clustering', 'Test lara'])
+
+
 ##------- IMPORT DES DATASETS
 @st.cache
 def load_data1():
@@ -53,7 +63,9 @@ if page == 'Présentation':
     st.image(image)
     
              
-    st.header("""**Analyse de l'activité de e-commerce**""")         
+    st.title("""**Analyse de l'activité de e-commerce**""") 
+    
+    st.header("""**Présentation**""")  
              
     st.write(""" 
              
