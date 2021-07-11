@@ -78,16 +78,11 @@ if page == 'Présentation':
              
              """)
    
-    @st.cache
-    def graphevents():    
-        fig, ax = plt.subplots()
-        sns.countplot(df_all['event'], ax=ax)
-        plt.figure(figsize=(4,3))
-        graph_events = st.pyplot(fig)
-        return graph_events
-        
-    graph_events = graphevents()
-    graph_events
+  
+    fig, ax = plt.subplots()
+    sns.countplot(df_all['event'], ax=ax)
+    plt.figure(figsize=(4,3))
+    st.pyplot(fig)
     
     ### -- 
     
