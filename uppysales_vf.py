@@ -54,7 +54,7 @@ if page == '1️ Présentation':
     
     image = img()
     
-    st.image(image)
+    st.image(image, width=50%)
     
              
     st.title("""**Analyse de l'activité de e-commerce**""") 
