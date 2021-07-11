@@ -20,7 +20,7 @@ import os
 ##------- ALL PAGE 
 st.set_page_config(page_title="UpPySales App",page_icon="🎯",layout="wide",initial_sidebar_state="expanded")
 
-page = st.sidebar.radio(label="Menu", options = ['1️ Présentation',  '2 Segmentation visiteurs', '3 Clustering'])
+page = st.sidebar.radio(label="Menu", options = ['1️⃣ Présentation',  '2 Segmentation visiteurs', '3 Clustering'])
 
 ### LOGO
 @st.cache
@@ -32,6 +32,8 @@ def img():
 image = img()
     
 st.image(image, width=None)
+
+st.title("""**Analyse de l'activité de e-commerce**""")
 
 ##------- IMPORT DES DATASETS
 @st.cache
@@ -53,11 +55,10 @@ events = load_data1()
 df_all = load_data2()
 
 ##------- PAGE PRÉSENTATION
-if page == '1️ Présentation':
+if page == '1️⃣ Présentation':
         
-    st.title("""**Analyse de l'activité de e-commerce**""") 
     
-    st.header("""**Présentation**""")  
+    st.header("""**1️⃣ Présentation**""")  
              
     st.write(""" 
              
