@@ -20,7 +20,7 @@ import os
 ##------- ALL PAGE 
 st.set_page_config(page_title="UpPySales App",page_icon="🎯",layout="wide",initial_sidebar_state="expanded")
 
-page = st.sidebar.radio(label="Menu", options = ['1️⃣ Présentation',  '2 Segmentation visiteurs', '3 Clustering'])
+page = st.sidebar.radio(label="Menu", options = ['1️⃣ Présentation',  '2️⃣ Segmentation visiteurs', '3️⃣ Clustering'])
 
 ### LOGO
 @st.cache
@@ -106,11 +106,11 @@ if page == '1️⃣ Présentation':
     
 ##------- PAGE SEGMENTATION VISITEURS 
 
-if page == '2 Segmentation visiteurs':
+if page == '2️⃣ Segmentation visiteurs':
         
     def main():
     
-        st.header('Segmentation visiteurs')
+        st.header('**2️⃣ Segmentation visiteurs**')
         st.write("""
          La première analyse du jeu de données nous suggère que le site attire beaucoup de visiteurs
             mais réalise très peu de transactions. Nous pensons que pour éviter le biais du survivant, il
@@ -334,9 +334,9 @@ if page == '2 Segmentation visiteurs':
              
 ##------- PAGE CLUSTERING 
 
-if page =='3 Clustering':
+if page =='3️⃣ Clustering':
     
-    st.title ("Clustering")
+    st.header("3️⃣ Clustering")
     
     
     
