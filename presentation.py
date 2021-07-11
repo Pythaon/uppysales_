@@ -40,9 +40,15 @@ df_all = load_data2()
 
 ##------- PAGE PRÉSENTATION
 if page == 'Présentation':
+    
     ### LOGO
-    urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
-    image = Image.open(requests.get(urllogo, stream=True).raw)
+    @st.cache
+    def img():
+        urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
+        image = Image.open(requests.get(urllogo, stream=True).raw)
+          return image
+    
+    image = img()
     
     st.image(image)
     
@@ -72,11 +78,16 @@ if page == 'Présentation':
              
              """)
    
+    @st.cache
+    def graphevents():    
+        fig, ax = plt.subplots()
+        sns.countplot(df_all['event'], ax=ax)
+        plt.figure(figsize=(4,3))
+        graph_events = st.pyplot(fig)
+          return graph_events
         
-    fig, ax = plt.subplots()
-    sns.countplot(df_all['event'], ax=ax)
-    st.pyplot(fig)
-    plt.figure(figsize=(4,3)) 
+    graph_events = graphevents()
+    graph_events
     
     ### -- 
     
