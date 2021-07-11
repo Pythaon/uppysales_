@@ -490,9 +490,68 @@ if page =='3️⃣ Clustering':
                  """)
         
     if choix_modele==models[1]:
+        
         st.write("écrire l'autre modèle")
-        
-        
-           
-                
-    
+        # Application de l'Algorithme de K-means sur 50 clusters
+        # Application de l'Algorithme de K-means sur 50 clusters
+        kmeans = KMeans(n_clusters = 50, random_state=500)
+        kmeans.fit(items_sc)
+
+        # Centroids and labels
+        centroids = kmeans.cluster_centers_
+        labels = kmeans.labels_
+
+        # Importation des packages nécessaires pour la CAH
+        from scipy.cluster.hierarchy import dendrogram, linkage
+
+        # Initialisaion de la figrue
+        plt.figure(figsize=(20, 10))
+
+        # Génération de la matrice des liens
+        Z = linkage(centroids, method = 'ward', metric = 'euclidean')
+
+        # Affichage du dendrogramme
+        plt.title("Dendrogramme CAH")
+        dendrogram(Z, labels = items.index, leaf_rotation = 7., color_threshold = 2)
+        plt.show()
+
+        #CAH
+        # Initialisation du classificateur CAH pour 3 clusters
+        cluster = AgglomerativeClustering(n_clusters = 3)
+        cluster.fit(centroids)
+        cl_labels = cluster.labels_
+
+        for i in range(50):
+            items_sc.loc[labels==i, 'cluster'] = cl_labels[i]
+
+        new_centroids = items_sc.groupby(by='cluster').mean()
+
+        km2 = KMeans(n_clusters = 3, init = new_centroids)
+        km2.fit(items_sc.drop("cluster",axis=1))
+
+        # Centroids and labels
+        centroids2 = km2.cluster_centers_
+        labels2 = km2.labels_
+
+        # Calcul du coefficient silhouette
+        silhouette_score(items_sc, labels2, metric='sqeuclidean')
+
+        # Vérification du nombre de points par cluster
+        from collections import Counter, defaultdict
+        print(Counter(km2.labels_))
+
+        # Liste des couleurs
+        colors = ["g.","r.","c."]
+        fig, ax = plt.subplots()
+        plt.figure(figsize=(8,8))
+        # Graphique du nuage de points attribués au cluster correspondant
+        for i in range(len(items_sc)):
+            plt.plot(items_sc.iloc[i,2], items_sc.iloc[i,3], colors[labels2[i]], markersize = 10)
+
+        plt.xlabel('transaction')
+        plt.ylabel('price')
+        plt.title('clusters')
+        plt.show()
+        plt.savefig("km_labels.jpg", dpi=300)
+        st.pyplot(fig)
+       
