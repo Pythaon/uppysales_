@@ -21,14 +21,6 @@ import os
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
                                   'Clustering', 'Test lara'])
 
-icon = Image.open("https://raw.githubusercontent.com/Pythaon/uppysales_/main/salesup_pink.png")
-st.set_page_config(
-    page_title="UpPySales App",
-    page_icon=icon,
-    layout="centered",
-    initial_sidebar_state="auto",
-)
-
 ##------- IMPORT DES DATASETS
 @st.cache
 def load_data1():
