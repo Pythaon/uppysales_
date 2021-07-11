@@ -17,11 +17,21 @@ import io
 from io import StringIO
 import os
 
-
+##------- ALL PAGE 
 st.set_page_config(page_title="UpPySales App",page_icon="🎯",layout="wide",initial_sidebar_state="expanded")
 
 page = st.sidebar.radio(label="Menu", options = ['1️ Présentation',  '2 Segmentation visiteurs', '3 Clustering'])
 
+### LOGO
+@st.cache
+def img():
+    urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
+    image = Image.open(requests.get(urllogo, stream=True).raw)
+    return image
+    
+image = img()
+    
+st.image(image, width=500)
 
 ##------- IMPORT DES DATASETS
 @st.cache
@@ -44,19 +54,7 @@ df_all = load_data2()
 
 ##------- PAGE PRÉSENTATION
 if page == '1️ Présentation':
-    
-    ### LOGO
-    @st.cache
-    def img():
-        urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
-        image = Image.open(requests.get(urllogo, stream=True).raw)
-        return image
-    
-    image = img()
-    
-    st.image(image, width=300)
-    
-             
+        
     st.title("""**Analyse de l'activité de e-commerce**""") 
     
     st.header("""**Présentation**""")  
