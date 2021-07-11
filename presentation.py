@@ -461,7 +461,7 @@ if page =='Clustering':
     
 #### ------- TEST LARA
 
-if page == 'Segmentation visiteurs':
+if page == 'Test Lara':
         
     def main():
     
