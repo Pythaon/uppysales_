@@ -519,9 +519,9 @@ if page =='3️⃣ Clustering':
 
         # Affichage du dendrogramme
         plt.title("Dendrogramme CAH")
-        dendrogram(Z, labels = items.index, leaf_rotation = 7., color_threshold = 2)
-        plt.show()
-        st.pyplot(fig)
+        fig3=dendrogram(Z, labels = items.index, leaf_rotation = 7., color_threshold = 2)
+        #plt.show()
+        st.pyplot(fig3)
 
         #CAH
         # Initialisation du classificateur CAH pour 3 clusters
@@ -559,7 +559,7 @@ if page =='3️⃣ Clustering':
         plt.xlabel('transaction')
         plt.ylabel('price')
         plt.title('clusters')
-        plt.show()
+        #plt.show()
         #plt.savefig("km_labels.jpg", dpi=300)
         st.pyplot(fig)
        
