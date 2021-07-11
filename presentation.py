@@ -46,7 +46,7 @@ if page == 'Présentation':
     def img():
         urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
         image = Image.open(requests.get(urllogo, stream=True).raw)
-          return image
+        return image
     
     image = img()
     
@@ -84,7 +84,7 @@ if page == 'Présentation':
         sns.countplot(df_all['event'], ax=ax)
         plt.figure(figsize=(4,3))
         graph_events = st.pyplot(fig)
-          return graph_events
+        return graph_events
         
     graph_events = graphevents()
     graph_events
