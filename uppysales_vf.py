@@ -327,18 +327,18 @@ if page == '2️⃣ Segmentation visiteurs':
             
         
             st.write("""
-                     **37%** des acheteurs sont des acheteurs récents, les identifier permet de pouvoir leur adresser une campagne de bienvenue et de remerciement. Nous pouvons également tenter de les fidéliser.
+                    **40%** des acheteurs sont des acheteurs récents, les identifier permet de pouvoir leur adresser une campagne de bienvenue et de remerciement. Nous pouvons également tenter de les fidéliser.
                     
-                    **25%** des acheteurs sont des "champions", en terme de chiffre d'affaires, mais attention 7% d'entre eux sont en risque car n'ont pas eu d'activité récente.
+                    **17%** des acheteurs sont des "champions", en terme de chiffre d'affaires, mais attention 7% d'entre eux sont en risque car n'ont pas eu d'activité récente.
                     La segmentation "champion" appelle a un traitement plus dédié de ce segment de clientèle.
                     
                     **20%** des acheteurs sont "à retenir", leur chiffre d'affaires et de moyen à faible, mais ils no'nt pas eu d'activité récente, ils sont à relancer.
                     
-                    **18%**des clients n'ont pas de caractéristiques particulères de recence ou de chiffre d'affaires, ils peuevnt être ciblés par une campagne de communication plus généraliste pour les faire revenir sur le site et les fidéliser.
+                    **17%**des clients n'ont pas de caractéristiques particulères de recence ou de chiffre d'affaires, ils peuevnt être ciblés par une campagne de communication plus généraliste pour les faire revenir sur le site et les fidéliser.
                     
                     Il conviendrait de rejouer cette segmentation sur un jeu de données avec un journal d'activité du site sur une plus longue période, afin d'observer les comportements dans le temps de manière plus précise.
                     
-                    Ici, sur une période de 4 mois il y a **37% des acheteurs** qui sont consédérés comme nouveaux, il est possible qu'une partie d'entre eux avaient fait des achats dans les semaines avant le début du relevé.
+                    Ici, sur une période de 4 mois il y a **40% des acheteurs** qui sont consédérés comme nouveaux, il est possible qu'une partie d'entre eux avaient fait des achats dans les semaines avant le début du relevé.
                                      """)
            
     main()    
