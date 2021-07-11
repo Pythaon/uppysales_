@@ -498,6 +498,7 @@ if page =='3️⃣ Clustering':
     if choix_modele==models[1]:
         
         st.write("écrire l'autre modèle")
+        
         # Application de l'Algorithme de K-means sur 50 clusters
         # Application de l'Algorithme de K-means sur 50 clusters
         kmeans = KMeans(n_clusters = 50, random_state=500)
@@ -520,6 +521,7 @@ if page =='3️⃣ Clustering':
         plt.title("Dendrogramme CAH")
         dendrogram(Z, labels = items.index, leaf_rotation = 7., color_threshold = 2)
         plt.show()
+        st.pyplot(fig)
 
         #CAH
         # Initialisation du classificateur CAH pour 3 clusters
@@ -558,6 +560,6 @@ if page =='3️⃣ Clustering':
         plt.ylabel('price')
         plt.title('clusters')
         plt.show()
-        plt.savefig("km_labels.jpg", dpi=300)
+        #plt.savefig("km_labels.jpg", dpi=300)
         st.pyplot(fig)
        
