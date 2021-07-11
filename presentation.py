@@ -18,7 +18,7 @@ from io import StringIO
 import os
 
 
-st.set_page_config(page_title="UpPySales App",page_icon="💲",layout="wide",initial_sidebar_state="expanded")
+st.set_page_config(page_title="UpPySales App",page_icon="💲🆙",layout="wide",initial_sidebar_state="expanded")
 
 page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 'Clustering', 'Test lara'])
 
