@@ -25,7 +25,7 @@ page = st.sidebar.radio(label="Menu", options = ['1️ Présentation',  '2 Segme
 ### LOGO
 @st.cache
 def img():
-    urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/c277f4b10bcee7a1fd364ef3bab9497d22900863/uppysales.png"
+    urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/uppysales_s.png"
     image = Image.open(requests.get(urllogo, stream=True).raw)
     return image
     
