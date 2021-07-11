@@ -17,7 +17,7 @@ import io
 from io import StringIO
 import os
 
-icon = Image.open("icon.png")
+icon = Image.open("https://raw.githubusercontent.com/Pythaon/uppysales_/main/salesup_pink.png")
 st.set_page_config(
     page_title="UpPySales App",
     page_icon=icon,
