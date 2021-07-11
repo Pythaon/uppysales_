@@ -21,7 +21,6 @@ from sklearn import linear_model
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
-from imblearn.metrics import classification_report_imbalanced, geometric_mean_score
 from sklearn.metrics import f1_score
 from sklearn import neighbors
 from sklearn import datasets
