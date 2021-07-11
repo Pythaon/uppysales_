@@ -509,19 +509,19 @@ if page =='3️⃣ Clustering':
         labels = kmeans.labels_
 
         # Importation des packages nécessaires pour la CAH
-        from scipy.cluster.hierarchy import dendrogram, linkage
+        #from scipy.cluster.hierarchy import dendrogram, linkage
 
         # Initialisaion de la figrue
-        plt.figure(figsize=(20, 10))
+        #plt.figure(figsize=(20, 10))
 
         # Génération de la matrice des liens
-        Z = linkage(centroids, method = 'ward', metric = 'euclidean')
+        #Z = linkage(centroids, method = 'ward', metric = 'euclidean')
 
         # Affichage du dendrogramme
-        plt.title("Dendrogramme CAH")
-        fig3=dendrogram(Z, labels = items.index, leaf_rotation = 7., color_threshold = 2)
+        #plt.title("Dendrogramme CAH")
+        #fig3=dendrogram(Z, labels = items.index, leaf_rotation = 7., color_threshold = 2)
         #plt.show()
-        st.pyplot(fig3)
+        #st.pyplot(fig3)
 
         #CAH
         # Initialisation du classificateur CAH pour 3 clusters
