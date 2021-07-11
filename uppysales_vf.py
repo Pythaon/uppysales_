@@ -17,6 +17,23 @@ import io
 from io import StringIO
 import os
 
+from sklearn import linear_model
+from sklearn import preprocessing
+from sklearn.model_selection import train_test_split
+from imblearn.over_sampling import RandomOverSampler, SMOTE
+from imblearn.under_sampling import RandomUnderSampler,  ClusterCentroids
+from sklearn.model_selection import GridSearchCV
+from imblearn.metrics import classification_report_imbalanced, geometric_mean_score
+from sklearn.metrics import f1_score
+from sklearn import neighbors
+from sklearn import datasets
+from scipy.spatial.distance import cdist
+from scipy.cluster.hierarchy import dendrogram, linkage
+from sklearn.cluster import KMeans
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import silhouette_score
+
 ##------- ALL PAGE 
 st.set_page_config(page_title="UpPySales App",page_icon="🎯",layout="wide",initial_sidebar_state="expanded")
 
