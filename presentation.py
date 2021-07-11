@@ -18,13 +18,9 @@ from io import StringIO
 import os
 
 
-page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
-                                  'Clustering', 'Test lara'])
-st.set_page_config(
-    page_title="UpPySales App",
-    layout="centered",
-    initial_sidebar_state="auto",
-)
+page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 'Clustering', 'Test lara'])
+
+st.set_page_config(page_title="UpPySales App",layout="centered",initial_sidebar_state="auto")
 
 ##------- IMPORT DES DATASETS
 @st.cache
