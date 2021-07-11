@@ -17,6 +17,10 @@ import io
 from io import StringIO
 import os
 
+
+page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
+                                  'Clustering', 'Test lara'])
+
 icon = Image.open("https://raw.githubusercontent.com/Pythaon/uppysales_/main/salesup_pink.png")
 st.set_page_config(
     page_title="UpPySales App",
@@ -24,10 +28,6 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="auto",
 )
-
-page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 
-                                  'Clustering', 'Test lara'])
-
 
 ##------- IMPORT DES DATASETS
 @st.cache
