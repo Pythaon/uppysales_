@@ -20,8 +20,6 @@ import os
 from sklearn import linear_model
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
-from imblearn.over_sampling import RandomOverSampler, SMOTE
-from imblearn.under_sampling import RandomUnderSampler,  ClusterCentroids
 from sklearn.model_selection import GridSearchCV
 from imblearn.metrics import classification_report_imbalanced, geometric_mean_score
 from sklearn.metrics import f1_score
@@ -452,14 +450,6 @@ if page =='3️⃣ Clustering':
         plt.xlabel('transaction')
         plt.ylabel('price')
         st.pyplot(fig)
-        # Graphique des centroïdes
-        #plt.scatter(centroids[:, 0],centroids[:, 1], marker = "o", color = "blue",s=30, linewidths = 1, zorder = 10)
-        
-        
-        #plt.xlabel('transaction')
-        #plt.ylabel('price')
-        #plt.title('clusters')
-        #plt.show()
 
         
         # standardisation
