@@ -31,7 +31,7 @@ def img():
     
 image = img()
     
-st.image(image, width=500)
+st.image(image, width=None)
 
 ##------- IMPORT DES DATASETS
 @st.cache
