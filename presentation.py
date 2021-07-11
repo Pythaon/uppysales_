@@ -20,7 +20,7 @@ import os
 
 st.set_page_config(page_title="UpPySales App",page_icon="🎯",layout="wide",initial_sidebar_state="expanded")
 
-page = st.sidebar.radio(label="Menu", options = ['Présentation',  'Segmentation visiteurs', 'Clustering', 'Test lara'])
+page = st.sidebar.radio(label="Menu", options = ['1️ Présentation',  '2 Segmentation visiteurs', '3 Clustering'])
 
 
 ##------- IMPORT DES DATASETS
@@ -43,7 +43,7 @@ events = load_data1()
 df_all = load_data2()
 
 ##------- PAGE PRÉSENTATION
-if page == 'Présentation':
+if page == '1️ Présentation':
     
     ### LOGO
     @st.cache
@@ -107,7 +107,7 @@ if page == 'Présentation':
     
 ##------- PAGE SEGMENTATION VISITEURS 
 
-if page == 'Segmentation visiteurs':
+if page == '2 Segmentation visiteurs':
     
     st.header('Segmentation visiteurs')
     st.write("""
@@ -309,7 +309,7 @@ if page == 'Segmentation visiteurs':
              
 ##------- PAGE CLUSTERING 
 
-if page =='Clustering':
+if page =='3 Clustering':
     
     st.title ("Clustering")
     
