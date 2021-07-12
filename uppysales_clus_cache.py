@@ -337,37 +337,28 @@ if page == '2️⃣ Segmentation visiteurs':
 if page =='3️⃣ Clustering':
     
     st.header("**3️⃣ Clustering**")
-    
-    
-    
     def main2():
         
         @st.cache
-        def cluster():
-            items = df_all.groupby(df_all['itemid'], as_index = False).agg({'event':'count', 'ev_view':'sum','ev_addtocart':'sum', 'ev_transaction':'sum', 'price':'mean', 'categoryid':'mean', 'parentid':'mean'})
+        def item():
+          items = df_all.groupby(df_all['itemid'], as_index = False).agg({'event':'count', 'ev_view':'sum','ev_addtocart':'sum', 'ev_transaction':'sum', 'price':'mean', 'categoryid':'mean', 'parentid':'mean'})
+          # on retire les lignes sans prix
+          items = items.dropna(axis = 0, how='all', subset=['price'])
+          # suppression des variables catégorielles
+          items = items.drop(['categoryid', 'parentid', 'itemid', 'event'], axis = 1)
+          return items
+        items = item()
             
-            
-            
-            # on retire les lignes sans prix
-            items = items.dropna(axis = 0, how='all', subset=['price'])
-            # suppression des variables catégorielles
-            items = items.drop(['categoryid', 'parentid', 'itemid', 'event'], axis = 1)
-            
-            # Normalisation
-            from sklearn.preprocessing import MinMaxScaler
-            scaler = MinMaxScaler()
-            items_sc = scaler.fit(items)
-            items_sc = scaler.transform(items)
-            return items_sc
-        
-        
+        # Normalisation
+        def norm():
+          from sklearn.preprocessing import MinMaxScaler
+          scaler = MinMaxScaler()
+          items_sc = scaler.fit(items)
+          items_sc = scaler.transform(items)
+          return items_sc
         items_sc = cluster()
         
-       
-        
         #fonction qui lance les modèles
-        
-    
         st.markdown("""
                     Nous allons tester les modèles suivants:""")
                     
@@ -377,130 +368,116 @@ if page =='3️⃣ Clustering':
         
         if choix_modele ==models[0]:
                      
-            @st.cache
-            def ncluster():
-                from scipy.spatial.distance import cdist
-                from sklearn.cluster import KMeans
-                # Liste des nombre de clusters
+          @st.cache
+          def ncluster():
+            from scipy.spatial.distance import cdist
+            from sklearn.cluster import KMeans
+            # Liste des nombre de clusters
                 
-                range_n_clusters = np.arange(2,10)
+            range_n_clusters = np.arange(2,10)
                 
-                # Initialisation de la liste de distortions
-                distortions = []
+            # Initialisation de la liste de distortions
+            distortions = []
                 
-                # Calcul des distortions pour les différents modèles
-                for n_clusters in range_n_clusters:
-                    # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
-                    cluster = KMeans(n_clusters = n_clusters)
-                    # Apprentissage des données suivant le cluster construit ci-dessus
-                    cluster.fit(items)
-                    # Ajout de la nouvelle distortion à la liste des données
-                    distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
-                
-                
-                    # Courbe du coude
-                fig, ax = plt.subplots()
-                #plt.figure(figsize=(5, 6))
-                plt.plot(range_n_clusters, distortions)
-                plt.xlabel('Nombre de Clusters K')
-                plt.ylabel('Distortion (WSS/TSS)')
-                plt.title('Méthode du coude affichant le nombre de clusters optimal')
-                fig2=st.pyplot(fig)
-                return fig2
+            # Calcul des distortions pour les différents modèles
+            for n_clusters in range_n_clusters:
+              # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
+              cluster = KMeans(n_clusters = n_clusters)
+              # Apprentissage des données suivant le cluster construit ci-dessus
+              cluster.fit(items)
+              # Ajout de la nouvelle distortion à la liste des données
+              distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
+ 
+              # Courbe du coude
+            fig, ax = plt.subplots()
+            #plt.figure(figsize=(5, 6))
+            plt.plot(range_n_clusters, distortions)
+            plt.xlabel('Nombre de Clusters K')
+            plt.ylabel('Distortion (WSS/TSS)')
+            plt.title('Méthode du coude affichant le nombre de clusters optimal')
+            fig2=st.pyplot(fig)
+            return fig2
             
-            fig2=ncluster()
+          fig2=ncluster()
             
         
             
             # Algorithme de K-means
-            @st.cache
-            def kmeans():
-                kmeans = KMeans(n_clusters = 4)
-                kmeans.fit(items_sc)
+          @st.cache
+          def kmeans():
+            kmeans = KMeans(n_clusters = 4)
+            kmeans.fit(items_sc)
             
-                # Centroids and labels
-                centroids = kmeans.cluster_centers_
-                labels = kmeans.labels_
+            # Centroids and labels
+            centroids = kmeans.cluster_centers_
+            labels = kmeans.labels_
                 
-                items_sc = pd.DataFrame(items_sc)
-                return items_sc
+            items_sc = pd.DataFrame(items_sc)
+            return items_sc
             
-            items_sc = kmeans()
-            
-            
-            
-            # Calcul du coefficient silhouette
-            from sklearn.metrics import silhouette_score
-            st.write("""Le coefficient de silhouette est de:""")
-            st.write(silhouette_score(items_sc, labels, metric='sqeuclidean'))
-            
-           
-            
-           
-            st.subheader("Représentation graphique des clusters")
-            
-            # Liste des coleurs
-            @st.cache 
-            def clus() :
-                fig, ax = plt.subplots()
-                colors = ["g.","r.","c.","y.","b."]
-                #plt.figure(figsize = (8,8))
-                # Grphique du nuage de points attribués au cluster correspondant
-                for i in range(len(items_sc)):
-                    plt.plot(items_sc.iloc[i,2], items_sc.iloc[i,3], colors[labels[i]], markersize = 10)
-                plt.xlabel('transaction')
-                plt.ylabel('price')
-                clus=st.pyplot(fig)
-                return clus
-            
-            clus = clus()
+          items_sc = kmeans()
 
-            # Graphique des centroïdes
-            #plt.scatter(centroids[:, 0],centroids[:, 1], marker = "o", color = "blue",s=30, linewidths = 1, zorder = 10)
-            #plt.xlabel('transaction')
-            #plt.ylabel('price')
-            #plt.title('clusters')
-            #plt.show()
-    
             
-            # standardisation
-            @st.cache 
-            def km():
-                scaler = MinMaxScaler()
-                df_scaled = pd.DataFrame(scaler.fit_transform(items))
-                df_scaled.columns = items.columns
-                df_scaled['km_labels'] = labels
+          # Calcul du coefficient silhouette
+          from sklearn.metrics import silhouette_score
+          st.write("""Le coefficient de silhouette est de:""")
+          st.write(silhouette_score(items_sc, labels, metric='sqeuclidean'))
+            
+          st.subheader("Représentation graphique des clusters")
+            
+          # Liste des coleurs
+          @st.cache 
+          def clus() :
+            fig, ax = plt.subplots()
+            colors = ["g.","r.","c.","y.","b."]
+            #plt.figure(figsize = (8,8))
+            # Grphique du nuage de points attribués au cluster correspondant
+            for i in range(len(items_sc)):
+              plt.plot(items_sc.iloc[i,2], items_sc.iloc[i,3], colors[labels[i]], markersize = 10)
+              plt.xlabel('transaction')
+              plt.ylabel('price')
+              clus=st.pyplot(fig)
+            return clus
+            
+          clus = clus()
+
+          # standardisation
+          @st.cache 
+          def km():
+            scaler = MinMaxScaler()
+            df_scaled = pd.DataFrame(scaler.fit_transform(items))
+            df_scaled.columns = items.columns
+            df_scaled['km_labels'] = labels
                 
-                # Calcul des moyennes de chaque variable pour chaque cluster
-                df_mean = df_scaled.loc[df_scaled.km_labels!=-1, :].groupby('km_labels').mean().reset_index()
-           
-                # Représentation graphique
+            # Calcul des moyennes de chaque variable pour chaque cluster
+            df_mean = df_scaled.loc[df_scaled.km_labels!=-1, :].groupby('km_labels').mean().reset_index()
+            # Représentation graphique
         
-                results = pd.DataFrame(columns=['Variable', 'Std'])
-                for column in df_mean.columns[1:]:
-                    results.loc[len(results), :] = [column, np.std(df_mean[column])]
-                selected_columns = list(results.sort_values('Std', ascending=False).head(7).Variable.values) + ['km_labels']
-                return selected_columns
+            results = pd.DataFrame(columns=['Variable', 'Std'])
+            for column in df_mean.columns[1:]:
+              results.loc[len(results), :] = [column, np.std(df_mean[column])]
+              selected_columns = list(results.sort_values('Std', ascending=False).head(7).Variable.values) + ['km_labels']
+            return selected_columns
             
-            selected_columns = km()
-            
-            
-            st.subheader("""Représentation graphique de l'importance des variables dans le clustering Kmeans""")
-            # Graphique
-            @st.cache
-            def kmplot():
-                tidy = df_scaled[selected_columns].melt(id_vars='km_labels')
-                fig, ax = plt.subplots(figsize=(15, 5))
-                sns.barplot(x='km_labels', y='value', hue='variable', data=tidy, palette='Set3')
-                plt.legend(loc='upper right')
-                plt.savefig("km_labels.jpg", dpi=300)
-                kmplot = st.pyplot(fig)
-                return kmplot
-            
-            kmplot = kmplot()
+          selected_columns = km()
             
             
-            st.write("""
+          st.subheader("""Représentation graphique de l'importance des variables dans le clustering Kmeans""")
+          # Graphique
+          @st.cache
+          def kmplot():
+            tidy = df_scaled[selected_columns].melt(id_vars='km_labels')
+            fig, ax = plt.subplots(figsize=(15, 5))
+            sns.barplot(x='km_labels', y='value', hue='variable', data=tidy, palette='Set3')
+            plt.legend(loc='upper right')
+            plt.savefig("km_labels.jpg", dpi=300)
+            kmplot = st.pyplot(fig)
+            return kmplot
+            
+          kmplot = kmplot()
+            
+            
+          st.write("""
                       Le modèle a principalement créé les clusters sur la différence de prix entre les
                 articles, ce qui est cohérent avec la représentation graphique qui regroupe les points
                 le long de l’axe de prix.
@@ -516,12 +493,9 @@ if page =='3️⃣ Clustering':
                 d)
                      """)
                      
-        main2()
+    main2()
         
-        if choix_modele==models[1]:
-            #@st.cache 
-            st.write("écrire l'autre modèle")
+      if choix_modele==models[1]:
+        @st.cache 
+        st.write("écrire l'autre modèle")
         
-        
-           
-                
