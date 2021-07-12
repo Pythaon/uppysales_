@@ -496,6 +496,6 @@ if page =='3️⃣ Clustering':
     main2()
         
     if choix_modele==models[1]:
-      @st.cache 
-      st.write("écrire l'autre modèle")
+      #@st.cache 
+      #st.write("écrire l'autre modèle")
         
