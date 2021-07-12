@@ -71,9 +71,9 @@ if page =='Clustering':
     
     if choix_modele ==models[0]:
     
-    @st.cache
+        @st.cache
         def img():
-            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/uppysales_s.png"
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
             image = Image.open(requests.get(urllogo, stream=True).raw)
             return image
 
