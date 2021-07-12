@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Jul  8 19:18:48 2021
-@author: Céline & Thao
+@author: Céline & Thao 
 """
 
 import pandas as pd
@@ -100,7 +100,7 @@ if page == '1️⃣ Présentation':
   
     fig, ax = plt.subplots()
     sns.countplot(df_all['event'], ax=ax)
-    plt.figure(figsize=(4,3))
+    plt.figure(figsize=(1,3))
     st.pyplot(fig)
     
     ### -- 
