@@ -98,9 +98,9 @@ if page == '1️⃣ Présentation':
              """)
    
   
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(4,3))
     sns.countplot(df_all['event'], ax=ax)
-    plt.figure(figsize=(1,3))
+    #plt.figure(figsize=(1,3))
     st.pyplot(fig)
     
     ### -- 
