@@ -32,7 +32,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import silhouette_score
 
 ##------- ALL PAGE 
-st.set_page_config(page_title="UpPySales App",page_icon="🎯",layout="wide",initial_sidebar_state="expanded")
+st.set_page_config(page_title="UpPySales App",page_icon="🎯",layout="centered",initial_sidebar_state="expanded")
 
 page = st.sidebar.radio(label="Menu", options = ['1️⃣ Présentation',  '2️⃣ Segmentation visiteurs', '3️⃣ Clustering'])
 
