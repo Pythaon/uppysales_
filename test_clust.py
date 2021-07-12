@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jul 12 19:14:48 2021
 
-@author: Utilisateur
-"""
 
 import pandas as pd
 import numpy as np
@@ -80,7 +76,6 @@ if page =='Clustering':
         image = img()
         
         
-     if choix_modele==models[1]:
-           #@st.cache 
-            st.write("écrire l'autre modèle")
-    
+    if choix_modele==models[1]:
+         #@st.cache 
+         st.write("écrire l'autre modèle")
