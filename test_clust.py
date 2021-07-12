@@ -35,7 +35,7 @@ choix_modele = st.radio("", options=models)
 
 if choix_modele ==models[0]:
     
-    image = Image.open("https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG")
+    image = Image.open("https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.png")
 
     st.image(image)
     
