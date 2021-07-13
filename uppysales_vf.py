@@ -428,7 +428,7 @@ if page =='3️⃣ Clustering':
             
             cluster()
 
-            st.subheader("Représentation graphique des clusters")
+            #st.subheader("Représentation graphique des clusters")
     main2()
     
     def main3():
