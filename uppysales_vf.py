@@ -378,7 +378,7 @@ if page =='3️⃣ Clustering':
         if choix_modele ==models[0]:
             
             @st.cache(suppress_st_warning=True)
-            def cluster(graph1):
+            def cluster():
                 from scipy.spatial.distance import cdist
                 from sklearn.cluster import KMeans
                 # Liste des nombre de clusters
