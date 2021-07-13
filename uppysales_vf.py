@@ -453,13 +453,13 @@ if page =='3️⃣ Clustering':
             #plt.show()
 
             # standardisation
+            scaler = MinMaxScaler()
+            df_scaled = pd.DataFrame(scaler.fit_transform(items))
+            df_scaled.columns = items.columns
+            df_scaled['km_labels'] = labels
+            
             @st.cache 
             def km():
-                scaler = MinMaxScaler()
-                df_scaled = pd.DataFrame(scaler.fit_transform(items))
-                df_scaled.columns = items.columns
-                df_scaled['km_labels'] = labels
-                
                 # Calcul des moyennes de chaque variable pour chaque cluster
                 df_mean = df_scaled.loc[df_scaled.km_labels!=-1, :].groupby('km_labels').mean().reset_index()
            
@@ -470,13 +470,8 @@ if page =='3️⃣ Clustering':
                     results.loc[len(results), :] = [column, np.std(df_mean[column])]
                 selected_columns = list(results.sort_values('Std', ascending=False).head(7).Variable.values) + ['km_labels']
             
-            km()
-            
-            st.subheader("""Représentation graphique de l'importance des variables dans le clustering Kmeans""")
-            # Graphique
-            @st.cache
-            
-            def kmplot():
+                st.subheader("""Représentation graphique de l'importance des variables dans le clustering Kmeans""")
+                # Graphique
                 tidy = df_scaled[selected_columns].melt(id_vars='km_labels')
                 fig_kmplot, ax = plt.subplots(figsize=(15, 5))
                 sns.barplot(x='km_labels', y='value', hue='variable', data=tidy, palette='Set3')
