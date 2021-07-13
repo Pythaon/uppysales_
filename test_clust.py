@@ -143,5 +143,34 @@ if page =='3️⃣ Clustering':
     
     if choix_modele==models[1]:
         #@st.cache 
-        st.write("écrire l'autre modèle")
-    
+        
+        st.write(""" ici est tésté un modèle mixte, avec une classification ascendante hierarchique pour connaitre le nombre de clusters, suivi d'un k means""")
+        
+        
+        
+        
+        @st.cache
+        def img():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/graph_dendo.PNG"
+            image = Image.open(requests.get(urllogo, stream=True).raw)
+            return image
+
+        image = img()
+
+        st.image(image, width=None)
+        
+        st.write("""
+             Le dendogramme laisse suggérer qu'il y a 3 clusters
+             """)
+         
+        @st.cache
+        def img2():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_cluster3.PNG"
+            image2 = Image.open(requests.get(urllogo, stream=True).raw)
+            return image2
+
+        image = img2()
+
+        st.image(image, width=None)    
+        
+        st.write("""Nous voyons dans le graphique principalement 2 clusters au lieu de 3, le troisième cluster ne contient qu'un point, ce modèle n'est donc pas fonctionnel""")
