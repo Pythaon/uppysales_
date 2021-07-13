@@ -377,7 +377,7 @@ if page =='3️⃣ Clustering':
 
         if choix_modele ==models[0]:
             
-            @st.cache()
+            @st.cache(suppress_st_warning=True)
             def cluster():
                 from scipy.spatial.distance import cdist
                 from sklearn.cluster import KMeans
@@ -410,3 +410,7 @@ if page =='3️⃣ Clustering':
             
             cluster()
     main2()
+    
+        if choix_modele==models[1]:
+            @st.cache 
+            st.write("écrire l'autre modèle")
