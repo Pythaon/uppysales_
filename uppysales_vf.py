@@ -7,15 +7,14 @@ Created on Thu Jul  8 19:18:48 2021
 import pandas as pd
 import numpy as np
 import datetime 
-import time
 import matplotlib.pyplot as plt 
 import seaborn as sns
 import streamlit as st
 from PIL import Image
 import requests
 import io
-from io import StringIO
-import os
+#from io import StringIO
+#mport os
 
 from sklearn import linear_model
 from sklearn import preprocessing
@@ -359,7 +358,7 @@ if page =='3️⃣ Clustering':
     items = items.drop(['categoryid', 'parentid', 'itemid', 'event'], axis = 1)
             
     # Normalisation
-    from sklearn.preprocessing import MinMaxScaler
+    #from sklearn.preprocessing import MinMaxScaler
     scaler = MinMaxScaler()
     items_sc = scaler.fit(items)
     items_sc = scaler.transform(items)
@@ -379,7 +378,7 @@ if page =='3️⃣ Clustering':
             
             @st.cache(suppress_st_warning=True)
             def cluster():
-                from scipy.spatial.distance import cdist
+                #from scipy.spatial.distance import cdist
                 from sklearn.cluster import KMeans
                 # Liste des nombre de clusters
                 
@@ -411,20 +410,17 @@ if page =='3️⃣ Clustering':
             cluster()
 
             # Algorithme de K-means
-            @st.cache
-            def kmeans():
-                kmeans = KMeans(n_clusters = 4)
-                kmeans.fit(items_sc)
+            kmeans = KMeans(n_clusters = 4)
+            kmeans.fit(items_sc)
             
-                # Centroids and labels
-                centroids = kmeans.cluster_centers_
-                labels = kmeans.labels_
-                items_sc = pd.DataFrame(items_sc)
-
-            kmeans()
+            # Centroids and labels
+            centroids = kmeans.cluster_centers_
+            labels = kmeans.labels_
+            #items_sc = pd.DataFrame(items_sc)
 
             # Calcul du coefficient silhouette
-            from sklearn.metrics import silhouette_score
+            #from sklearn.metrics import silhouette_score
+            
             st.write("""Le coefficient de silhouette est de:""")
             st.write(silhouette_score(items_sc, labels, metric='sqeuclidean'))
 
@@ -479,7 +475,7 @@ if page =='3️⃣ Clustering':
                 plt.savefig("km_labels.jpg", dpi=300)
                 st.pyplot(fig_kmplot)
 
-            kmplot()
+            km()
             
             
             st.write("""
