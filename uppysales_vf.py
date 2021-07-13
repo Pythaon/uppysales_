@@ -417,7 +417,7 @@ if page =='3️⃣ Clustering':
             # Centroids and labels
             #centroids = kmeans.cluster_centers_
             labels = kmeans.labels_
-            #items_sc = pd.DataFrame(items_sc)
+            items_sc = pd.DataFrame(items_sc)
 
             # Calcul du coefficient silhouette
             #from sklearn.metrics import silhouette_score
@@ -428,6 +428,7 @@ if page =='3️⃣ Clustering':
             st.subheader("Représentation graphique des clusters")
             
             # Liste des coleurs
+
             def clus() :
                 fig_clus, ax = plt.subplots()
                 colors = ["g.","r.","c.","y.","b."]
