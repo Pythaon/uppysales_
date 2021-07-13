@@ -49,7 +49,7 @@ if choix_modele ==models[0]:
     
     #image = img()
 
-    image = Image.open("https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.png")
+    image = Image.open("https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG")
     
     st.image(image)
     
