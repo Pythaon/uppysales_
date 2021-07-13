@@ -386,7 +386,7 @@ if page =='3️⃣ Clustering':
             # Initialisation de la liste de distortions
             distortions = []
             
-            @st.cache
+            @st.cache(suppress_st_warning=True)
             def cluster(range_n_clusters):
                 # Calcul des distortions pour les différents modèles
                 for n_clusters in range_n_clusters:
