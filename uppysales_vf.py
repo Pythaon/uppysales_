@@ -390,13 +390,13 @@ if page =='3️⃣ Clustering':
             
             
                 # Calcul des distortions pour les différents modèles
-                    for n_clusters in range_n_clusters:
-                        # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
-                        cluster = KMeans(n_clusters = n_clusters)
-                        # Apprentissage des données suivant le cluster construit ci-dessus
-                        cluster.fit(items)
-                        # Ajout de la nouvelle distortion à la liste des données
-                        distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
+                for n_clusters in range_n_clusters:
+                    # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
+                    cluster = KMeans(n_clusters = n_clusters)
+                    # Apprentissage des données suivant le cluster construit ci-dessus
+                    cluster.fit(items)
+                    # Ajout de la nouvelle distortion à la liste des données
+                    distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
                 
                 # Courbe du coude
                 fig_coude, ax = plt.subplots()
