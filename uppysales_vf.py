@@ -407,9 +407,8 @@ if page =='3️⃣ Clustering':
                 plt.title('Méthode du coude affichant le nombre de clusters optimal')
                 
                 st.pyplot(fig_coude)
-            
-            graph_coude=cluster(graph1)
-            st.pyplot(graph_coude)
+                
+            cluster()
     main2()
     
     def main3():
