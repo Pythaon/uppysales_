@@ -413,4 +413,4 @@ if page =='3️⃣ Clustering':
     
     if choix_modele==models[1]:
             @st.cache 
-            st.write("écrire l'autre modèle")
+            st.write("""écrire l'autre modèle""")
