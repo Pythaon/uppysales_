@@ -387,7 +387,7 @@ if page =='3️⃣ Clustering':
             distortions = []
             
             @st.cache(suppress_st_warning=True)
-            def cluster(range_n_clusters):
+            def cluster():
                 # Calcul des distortions pour les différents modèles
                 for n_clusters in range_n_clusters:
                     # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
@@ -407,5 +407,5 @@ if page =='3️⃣ Clustering':
                 
                 st.pyplot(fig_coude)
             
-            cluster(range_n_clusters)
+            cluster()
     main2()
