@@ -377,6 +377,7 @@ if page =='3️⃣ Clustering':
         if choix_modele ==models[0]:
             
             @st.cache(suppress_st_warning=True)
+            
             def cluster():
                 #from scipy.spatial.distance import cdist
                 from sklearn.cluster import KMeans
@@ -414,7 +415,7 @@ if page =='3️⃣ Clustering':
             kmeans.fit(items_sc)
             
             # Centroids and labels
-            centroids = kmeans.cluster_centers_
+            #centroids = kmeans.cluster_centers_
             labels = kmeans.labels_
             #items_sc = pd.DataFrame(items_sc)
 
@@ -427,7 +428,6 @@ if page =='3️⃣ Clustering':
             st.subheader("Représentation graphique des clusters")
             
             # Liste des coleurs
-            @st.cache 
             def clus() :
                 fig_clus, ax = plt.subplots()
                 colors = ["g.","r.","c.","y.","b."]
@@ -435,6 +435,7 @@ if page =='3️⃣ Clustering':
                 # Grphique du nuage de points attribués au cluster correspondant
                 for i in range(len(items_sc)):
                     plt.plot(items_sc.iloc[i,2], items_sc.iloc[i,3], colors[labels[i]], markersize = 10)
+                
                 plt.xlabel('transaction')
                 plt.ylabel('price')
                 st.pyplot(fig_clus)
