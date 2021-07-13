@@ -43,7 +43,7 @@ if choix_modele ==models[0]:
     
     #@st.cache
     #def img():
-     #   urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.png"
+     #   urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
       #  image = Image.open(requests.get(urllogo, stream=True).raw)
        # return image
     
