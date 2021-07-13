@@ -406,14 +406,15 @@ if page =='3️⃣ Clustering':
                 plt.ylabel('Distortion (WSS/TSS)')
                 plt.title('Méthode du coude affichant le nombre de clusters optimal')
                 
-                st.pyplot(fig_coude)
-            
+
             cluster()
+            st.pyplot(fig_coude)
     main2()
     
     def main3():
     
         if choix_modele==models[1]:
+            
             @st.cache
             def test(a,b):
                 c = a + b
