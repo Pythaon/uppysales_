@@ -347,36 +347,34 @@ if page == '2️⃣ Segmentation visiteurs':
    
              
 ##------- PAGE CLUSTERING 
+
 if page =='3️⃣ Clustering':
     
     st.header("**3️⃣ Clustering**")
-    
-    
-    
+    items = df_all.groupby(df_all['itemid'], as_index = False).agg({'event':'count', 'ev_view':'sum','ev_addtocart':'sum', 'ev_transaction':'sum', 'price':'mean', 'categoryid':'mean', 'parentid':'mean'})
+
+    # on retire les lignes sans prix
+    items = items.dropna(axis = 0, how='all', subset=['price'])
+    # suppression des variables catégorielles
+    items = items.drop(['categoryid', 'parentid', 'itemid', 'event'], axis = 1)
+            
+    # Normalisation
+    from sklearn.preprocessing import MinMaxScaler
+    scaler = MinMaxScaler()
+    items_sc = scaler.fit(items)
+    items_sc = scaler.transform(items)
+
+    #fonction qui lance les modèles
+
+    st.markdown("""
+                Nous allons tester les modèles suivants:""")
+                    
+    models = ['Kmeans', 'Clustering Mixte kmeans & ACH']
+                  
+    choix_modele = st.radio("", options=models)
+        
     def main2():
 
-        items = df_all.groupby(df_all['itemid'], as_index = False).agg({'event':'count', 'ev_view':'sum','ev_addtocart':'sum', 'ev_transaction':'sum', 'price':'mean', 'categoryid':'mean', 'parentid':'mean'})
-
-        # on retire les lignes sans prix
-        items = items.dropna(axis = 0, how='all', subset=['price'])
-        # suppression des variables catégorielles
-        items = items.drop(['categoryid', 'parentid', 'itemid', 'event'], axis = 1)
-            
-        # Normalisation
-        from sklearn.preprocessing import MinMaxScaler
-        scaler = MinMaxScaler()
-        items_sc = scaler.fit(items)
-        items_sc = scaler.transform(items)
-
-        #fonction qui lance les modèles
-
-        st.markdown("""
-                    Nous allons tester les modèles suivants:""")
-                    
-        models = ['Kmeans', 'Clustering Mixte kmeans & ACH']
-                  
-        choix_modele = st.radio("", options=models)
-        
         if choix_modele ==models[0]:
 
             from scipy.spatial.distance import cdist
@@ -389,7 +387,7 @@ if page =='3️⃣ Clustering':
             distortions = []
             
             @st.cache
-            def cluster(graph_coude):
+            def cluster(range_n_clusters):
                 # Calcul des distortions pour les différents modèles
                 for n_clusters in range_n_clusters:
                     # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
@@ -409,6 +407,5 @@ if page =='3️⃣ Clustering':
                 
                 st.pyplot(fig_coude)
             
-            cluster(graph_coude)
-
-        main2()
+            cluster(range_n_clusters)
+    main2()
