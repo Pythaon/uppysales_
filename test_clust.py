@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Created on Mon Jul 12 19:52:38 2021
 
@@ -51,17 +52,15 @@ if choix_modele ==models[0]:
     
     #image = img()
 
-    image = Image.open("https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG")
+    @st.cache
+    def img():
+        urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
+        image = Image.open(requests.get(urllogo, stream=True).raw)
+        return image
     
-    st.image(image)
+    image = img()
     
     
     st.write("""
              Le coude n'est pas très franc mais apparait autour du nombre de cluster = 4
              """)
-             
-   
-    
-if choix_modele==models[1]:
-     #@st.cache 
-     st.write("écrire l'autre modèle")
