@@ -377,7 +377,7 @@ if page =='3️⃣ Clustering':
 
         if choix_modele ==models[0]:
             
-            @st.cache(suppress_st_warning=True)
+            @st.cache()
             def cluster():
                 from scipy.spatial.distance import cdist
                 from sklearn.cluster import KMeans
