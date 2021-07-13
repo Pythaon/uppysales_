@@ -173,4 +173,4 @@ if page =='3️⃣ Clustering':
 
         st.image(image, width=None)    
         
-        st.write("""Nous voyons dans le graphique principalement 2 clusters au lieu de 3, le troisième cluster ne contient qu'un point, ce modèle n'est donc pas fonctionnel""")
+        st.error("""Nous voyons dans le graphique principalement 2 clusters au lieu de 3, le troisième cluster ne contient qu'un point, ce modèle n'est donc pas fonctionnel""")
