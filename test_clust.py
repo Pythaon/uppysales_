@@ -53,14 +53,28 @@ st.title("""**Analyse de l'activité de e-commerce**""")
 if page =='3️⃣ Clustering':
     
     st.header("**3️⃣ Clustering**")
-    @st.cache
-    def img():
-        urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
-        image = Image.open(requests.get(urllogo, stream=True).raw)
-        return image
+    
+    st.markdown("""
+            Nous allons tester les modèles suivants:
+                
+                
+                """)
+            
+    models = ['Kmeans', 'Clustering Mixte kmeans & ACH']
 
-    image = img()
+    choix_modele = st.radio("", options=models)
 
-    st.image(image, width=None)
+
+
+    if choix_modele ==models[0]:
+        @st.cache
+        def img():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
+            image = Image.open(requests.get(urllogo, stream=True).raw)
+            return image
+
+        image = img()
+
+        st.image(image, width=None)
     
     
