@@ -376,26 +376,27 @@ if page =='3️⃣ Clustering':
     def main2():
 
         if choix_modele ==models[0]:
-
-            from scipy.spatial.distance import cdist
-            from sklearn.cluster import KMeans
-            # Liste des nombre de clusters
-                
-            range_n_clusters = np.arange(2,10)
-                
-            # Initialisation de la liste de distortions
-            distortions = []
             
             @st.cache(suppress_st_warning=True)
             def cluster():
+                from scipy.spatial.distance import cdist
+                from sklearn.cluster import KMeans
+                # Liste des nombre de clusters
+                
+                range_n_clusters = np.arange(2,10)
+                
+                # Initialisation de la liste de distortions
+                distortions = []
+            
+            
                 # Calcul des distortions pour les différents modèles
-                for n_clusters in range_n_clusters:
-                    # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
-                    cluster = KMeans(n_clusters = n_clusters)
-                    # Apprentissage des données suivant le cluster construit ci-dessus
-                    cluster.fit(items)
-                    # Ajout de la nouvelle distortion à la liste des données
-                    distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
+                    for n_clusters in range_n_clusters:
+                        # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
+                        cluster = KMeans(n_clusters = n_clusters)
+                        # Apprentissage des données suivant le cluster construit ci-dessus
+                        cluster.fit(items)
+                        # Ajout de la nouvelle distortion à la liste des données
+                        distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
                 
                 # Courbe du coude
                 fig_coude, ax = plt.subplots()
