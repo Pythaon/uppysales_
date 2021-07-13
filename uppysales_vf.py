@@ -7,14 +7,15 @@ Created on Thu Jul  8 19:18:48 2021
 import pandas as pd
 import numpy as np
 import datetime 
+import time
 import matplotlib.pyplot as plt 
 import seaborn as sns
 import streamlit as st
 from PIL import Image
 import requests
 import io
-#from io import StringIO
-#mport os
+from io import StringIO
+import os
 
 from sklearn import linear_model
 from sklearn import preprocessing
@@ -358,7 +359,7 @@ if page =='3️⃣ Clustering':
     items = items.drop(['categoryid', 'parentid', 'itemid', 'event'], axis = 1)
             
     # Normalisation
-    #from sklearn.preprocessing import MinMaxScaler
+    from sklearn.preprocessing import MinMaxScaler
     scaler = MinMaxScaler()
     items_sc = scaler.fit(items)
     items_sc = scaler.transform(items)
@@ -377,9 +378,8 @@ if page =='3️⃣ Clustering':
         if choix_modele ==models[0]:
             
             @st.cache(suppress_st_warning=True)
-            
             def cluster():
-                #from scipy.spatial.distance import cdist
+                from scipy.spatial.distance import cdist
                 from sklearn.cluster import KMeans
                 # Liste des nombre de clusters
                 
@@ -409,93 +409,6 @@ if page =='3️⃣ Clustering':
                 st.pyplot(fig_coude)
                 
             cluster()
-
-            # Algorithme de K-means
-            kmeans = KMeans(n_clusters = 4)
-            kmeans.fit(items_sc)
-            
-            # Centroids and labels
-            #centroids = kmeans.cluster_centers_
-            labels = kmeans.labels_
-            items_sc = pd.DataFrame(items_sc)
-
-            # Calcul du coefficient silhouette
-            #from sklearn.metrics import silhouette_score
-            
-            st.write("""Le coefficient de silhouette est de:""")
-            st.write(silhouette_score(items_sc, labels, metric='sqeuclidean'))
-
-            st.subheader("Représentation graphique des clusters")
-            
-            # Liste des coleurs
-
-            def clus() :
-                fig_clus, ax = plt.subplots()
-                colors = ["g.","r.","c.","y.","b."]
-                #plt.figure(figsize = (8,8))
-                # Grphique du nuage de points attribués au cluster correspondant
-                for i in range(len(items_sc)):
-                    plt.plot(items_sc.iloc[i,2], items_sc.iloc[i,3], colors[labels[i]], markersize = 10)
-                
-                plt.xlabel('transaction')
-                plt.ylabel('price')
-                st.pyplot(fig_clus)
-            
-            clus()
-
-            # Graphique des centroïdes
-            #plt.scatter(centroids[:, 0],centroids[:, 1], marker = "o", color = "blue",s=30, linewidths = 1, zorder = 10)
-            #plt.xlabel('transaction')
-            #plt.ylabel('price')
-            #plt.title('clusters')
-            #plt.show()
-
-            # standardisation
-            scaler = MinMaxScaler()
-            df_scaled = pd.DataFrame(scaler.fit_transform(items))
-            df_scaled.columns = items.columns
-            df_scaled['km_labels'] = labels
-            
-            @st.cache 
-            def km():
-                # Calcul des moyennes de chaque variable pour chaque cluster
-                df_mean = df_scaled.loc[df_scaled.km_labels!=-1, :].groupby('km_labels').mean().reset_index()
-           
-                # Représentation graphique
-        
-                results = pd.DataFrame(columns=['Variable', 'Std'])
-                for column in df_mean.columns[1:]:
-                    results.loc[len(results), :] = [column, np.std(df_mean[column])]
-                selected_columns = list(results.sort_values('Std', ascending=False).head(7).Variable.values) + ['km_labels']
-            
-                st.subheader("""Représentation graphique de l'importance des variables dans le clustering Kmeans""")
-                # Graphique
-                tidy = df_scaled[selected_columns].melt(id_vars='km_labels')
-                fig_kmplot, ax = plt.subplots(figsize=(15, 5))
-                sns.barplot(x='km_labels', y='value', hue='variable', data=tidy, palette='Set3')
-                plt.legend(loc='upper right')
-                plt.savefig("km_labels.jpg", dpi=300)
-                st.pyplot(fig_kmplot)
-
-            km()
-            
-            
-            st.write("""
-                      Le modèle a principalement créé les clusters sur la différence de prix entre les
-                articles, ce qui est cohérent avec la représentation graphique qui regroupe les points
-                le long de l’axe de prix.
-                
-                
-                En revanche, nous ne connaissons pas la nature des produits sur le site, nous ne
-                pouvons pas savoir si ce classement est pertinent ou non.
-                
-                
-                La segmentation obtenue par apprentissage supervisé utilise la variable prix plus que
-                les variables de performances de l’article (nombre de vues, mises au panier,
-                transaction) tels qu’utilisés dans le scoring
-                d)
-                     """)
-                     
     main2()
     
     def main3():
@@ -513,3 +426,4 @@ if page =='3️⃣ Clustering':
             st.write("""test = """, res)
     
     main3()
+                
