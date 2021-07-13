@@ -411,6 +411,18 @@ if page =='3️⃣ Clustering':
             cluster()
     main2()
     
-    if choix_modele==models[1]:
-            @st.cache 
-            st.write("""écrire l'autre modèle""")
+    def main3():
+    
+        if choix_modele==models[1]:
+            @st.cache
+            def test(a,b):
+                c = a + b
+                return c
+            a=5
+            b=7
+            res=test(a,b)
+            
+            st.write("""test = """, res)
+    
+    main3()
+                
