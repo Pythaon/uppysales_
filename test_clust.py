@@ -53,5 +53,14 @@ st.title("""**Analyse de l'activité de e-commerce**""")
 if page =='3️⃣ Clustering':
     
     st.header("**3️⃣ Clustering**")
+    @st.cache
+    def img():
+        urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
+        image = Image.open(requests.get(urllogo, stream=True).raw)
+        return image
+
+    image = img()
+
+    st.image(image, width=None)
     
     
