@@ -48,3 +48,10 @@ image = img()
 st.image(image, width=None)
 
 st.title("""**Analyse de l'activité de e-commerce**""")
+
+
+if page =='3️⃣ Clustering':
+    
+    st.header("**3️⃣ Clustering**")
+    
+    
