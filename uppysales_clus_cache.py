@@ -356,7 +356,7 @@ if page =='3️⃣ Clustering':
           items_sc = scaler.fit(items)
           items_sc = scaler.transform(items)
           return items_sc
-        items_sc = cluster()
+        items_sc = norm()
         
         #fonction qui lance les modèles
         st.markdown("""
