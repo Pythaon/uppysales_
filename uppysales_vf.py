@@ -377,10 +377,10 @@ if page =='3️⃣ Clustering':
 
         if choix_modele ==models[0]:
             
-            @st.cache
+            @st.cache(persist=True)
             def cluster():
-                from scipy.spatial.distance import cdist
-                from sklearn.cluster import KMeans
+                #from scipy.spatial.distance import cdist
+                #from sklearn.cluster import KMeans
                 # Liste des nombre de clusters
                 
                 range_n_clusters = np.arange(2,10)
@@ -414,12 +414,12 @@ if page =='3️⃣ Clustering':
             kmeans.fit(items_sc)
             
             # Centroids and labels
-            centroids = kmeans.cluster_centers_
+            #centroids = kmeans.cluster_centers_
             labels = kmeans.labels_
             items_sc = pd.DataFrame(items_sc)
 
             # Calcul du coefficient silhouette
-            from sklearn.metrics import silhouette_score
+            #from sklearn.metrics import silhouette_score
             
             st.write("""Le coefficient de silhouette est de:""")
             st.write(silhouette_score(items_sc, labels, metric='sqeuclidean'))
