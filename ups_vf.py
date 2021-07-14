@@ -133,15 +133,13 @@ if page == '2️⃣ Segmentation visiteurs':
             pour pouvoir suggérer des changements au propriétaire de ce site e-commerce pour
             améliorer son taux de conversion.
             
-            Ainsi notre analyse RFM prend en compte les éléments suivants:
+            **Ainsi notre analyse RFM prend en compte les éléments suivants:**
                 
                 
             ● R - Récence : date de dernière action sur le site
-        
             
             ● F - Fréquence : nombre d'action sur le site
-            
-            
+        
             ● M - Monetary : Montant des transactions s’il y en a eu
         
         """)
