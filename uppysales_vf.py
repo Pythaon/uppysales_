@@ -409,6 +409,20 @@ if page =='3️⃣ Clustering':
                 st.pyplot(fig_coude)
                 
             cluster()
+            # Algorithme de K-means
+            kmeans = KMeans(n_clusters = 4)
+            kmeans.fit(items_sc)
+            
+            # Centroids and labels
+            centroids = kmeans.cluster_centers_
+            labels = kmeans.labels_
+            items_sc = pd.DataFrame(items_sc)
+
+            # Calcul du coefficient silhouette
+            from sklearn.metrics import silhouette_score
+            
+            st.write("""Le coefficient de silhouette est de:""")
+            st.write(silhouette_score(items_sc, labels, metric='sqeuclidean'))
     main2()
     
     def main3():
