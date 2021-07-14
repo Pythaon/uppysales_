@@ -378,12 +378,12 @@ if page =='3️⃣ Clustering':
         if choix_modele ==models[0]:
             
             @st.cache(persist=True)
-            def cluster():
+            def cluster(range_n_clusters):
                 #from scipy.spatial.distance import cdist
                 #from sklearn.cluster import KMeans
                 # Liste des nombre de clusters
                 
-                range_n_clusters = np.arange(2,10)
+                #range_n_clusters = np.arange(2,10)
                 
                 # Initialisation de la liste de distortions
                 distortions = []
@@ -407,7 +407,8 @@ if page =='3️⃣ Clustering':
                 plt.title('Méthode du coude affichant le nombre de clusters optimal')
                 
                 st.pyplot(fig_coude)
-                
-            cluster()
+            
+            range_n_clusters = np.arange(2,10)    
+            cluster(range_n_clusters)
 
     main2()
