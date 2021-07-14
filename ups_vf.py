@@ -363,7 +363,7 @@ if page =='3️⃣ Clustering':
         return image
     
     image = img()
-    st.image(image, width=600)
+    st.image(image, width=700)
     
     
     st.markdown("""
@@ -430,7 +430,7 @@ if page =='3️⃣ Clustering':
     
         image = img4()
     
-        st.image(image, width=600)        
+        st.image(image, width=700)        
             
     
         st.write("""
@@ -464,7 +464,7 @@ if page =='3️⃣ Clustering':
 
         image = img()
 
-        st.image(image, width=600)
+        st.image(image, width=700)
         
         st.write("""
              Le dendogramme laisse suggérer qu'il y a 3 clusters
