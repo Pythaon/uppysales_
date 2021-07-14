@@ -406,7 +406,7 @@ if page =='3️⃣ Clustering':
                 plt.ylabel('Distortion (WSS/TSS)')
                 plt.title('Méthode du coude affichant le nombre de clusters optimal')
                 
-                st.pyplot(fig_coude)
+                return st.pyplot(fig_coude)
             
             range_n_clusters = np.arange(2,10)    
             cluster(range_n_clusters)
