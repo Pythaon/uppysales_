@@ -367,7 +367,9 @@ if page =='3️⃣ Clustering':
     
     
     st.markdown("""
-            Nous allons tester les modèles suivants:
+    
+    
+            Nous allons tester les modèles suivants afin de voir comment un modèle d'apprentissage non supervisé classe les items:
                 
                 
                 """)
