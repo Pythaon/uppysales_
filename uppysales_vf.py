@@ -358,14 +358,16 @@ if page =='3️⃣ Clustering':
     """)
     
      @st.cache
-        def img():
-            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/seg_items.PNG"
-            image = Image.open(requests.get(urllogo, stream=True).raw)
-            return image
+     def img():
+         urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/seg_items.PNG"
+         image = Image.open(requests.get(urllogo, stream=True).raw)
+         return image
 
-        image = img()
+     image = img()
 
-        st.image(image, width=None)
+     st.image(image, width=None)
+    
+    
     st.markdown("""
             Nous allons tester les modèles suivants:
                 
