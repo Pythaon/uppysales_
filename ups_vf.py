@@ -395,7 +395,7 @@ if page =='3️⃣ Clustering':
              Le coude n'est pas très franc mais apparait autour du nombre de cluster = 4
              """)
          
-        st.write(""" Le coefficient de silhouette est de:
+        st.write(""" **Le coefficient de silhouette est de:**
         
         """)
         
