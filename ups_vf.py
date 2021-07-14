@@ -395,15 +395,11 @@ if page =='3️⃣ Clustering':
              Le coude n'est pas très franc mais apparait autour du nombre de cluster = 4
              """)
          
-        @st.cache
-        def img2():
-            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/silhouette.PNG"
-            image2 = Image.open(requests.get(urllogo, stream=True).raw)
-            return image2
-
-        image = img2()
-
-        st.image(image, width=200)    
+        st.write(""" Le coefficient de silhouette est de:
+        
+        """)
+        
+        st.success("0.7161304467872375")
     
         @st.cache
         def img3():
