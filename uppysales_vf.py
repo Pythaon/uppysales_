@@ -351,6 +351,21 @@ if page == '2️⃣ Segmentation visiteurs':
 if page =='3️⃣ Clustering':
     
     st.header("**3️⃣ Clustering**")
+    
+    st.write("""le scoring RFM adapté pour les items nous a permis de segmenter les produits en fonction de leur attractivité (nombre de vues) et de leur efficacité (conversion):
+    
+    
+    """)
+    
+     @st.cache
+        def img():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/seg_items.PNG"
+            image = Image.open(requests.get(urllogo, stream=True).raw)
+            return image
+
+        image = img()
+
+        st.image(image, width=None)
     st.markdown("""
             Nous allons tester les modèles suivants:
                 
