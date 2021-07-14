@@ -355,6 +355,17 @@ if page =='3️⃣ Clustering':
     st.write("""
     Grace à une adaptation du scoring aux items, les produits du jeu de données ont pu être segmentés en focntion de leur attractivité
     """)
+    
+    @st.cache
+    def.img()
+        urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
+        image = Image.open(requests.get(urllogo, stream=True).raw)
+        return image
+    
+    image = img()
+    st.image(image, width=None)
+    
+    
     st.markdown("""
             Nous allons tester les modèles suivants:
                 
