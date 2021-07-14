@@ -417,7 +417,7 @@ if page =='3️⃣ Clustering':
         
         
         st.write("""
-                 Le modèle a créé 4 clusters qui semblent alignés sur l'axe de la variable prix'
+                 Le modèle a créé 4 clusters qui semblent alignés sur l'axe de la variable prix
                  
                  
                 Calcul de la moyenne des variables par cluster:
@@ -451,7 +451,7 @@ if page =='3️⃣ Clustering':
     if choix_modele==models[1]:
         #@st.cache 
         
-        st.write(""" ici est tésté un modèle mixte, avec une classification ascendante hierarchique pour connaitre le nombre de clusters, suivi d'un k means""")
+        st.write(""" Test d'un modèle mixte, avec une classification ascendante hierarchique pour connaitre le nombre de clusters, suivi d'un k means""")
         
         
         
