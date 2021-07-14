@@ -351,84 +351,116 @@ if page == '2️⃣ Segmentation visiteurs':
 if page =='3️⃣ Clustering':
     
     st.header("**3️⃣ Clustering**")
-    items = df_all.groupby(df_all['itemid'], as_index = False).agg({'event':'count', 'ev_view':'sum','ev_addtocart':'sum', 'ev_transaction':'sum', 'price':'mean', 'categoryid':'mean', 'parentid':'mean'})
-
-    # on retire les lignes sans prix
-    items = items.dropna(axis = 0, how='all', subset=['price'])
-    # suppression des variables catégorielles
-    items = items.drop(['categoryid', 'parentid', 'itemid', 'event'], axis = 1)
-            
-    # Normalisation
-    #from sklearn.preprocessing import MinMaxScaler
-    scaler = MinMaxScaler()
-    items_sc = scaler.fit(items)
-    items_sc = scaler.transform(items)
-
-    #fonction qui lance les modèles
-
     st.markdown("""
-                Nous allons tester les modèles suivants:""")
-                    
+            Nous allons tester les modèles suivants:
+                
+                
+                """)
+            
     models = ['Kmeans', 'Clustering Mixte kmeans & ACH']
-                  
+
     choix_modele = st.radio("", options=models)
+
+
+
+    if choix_modele ==models[0]:
+        @st.cache
+        def img():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
+            image = Image.open(requests.get(urllogo, stream=True).raw)
+            return image
+
+        image = img()
+
+        st.image(image, width=None)
         
-    def main2():
+        st.write("""
+             Le coude n'est pas très franc mais apparait autour du nombre de cluster = 4
+             """)
+         
+        @st.cache
+        def img2():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/silhouette.PNG"
+            image2 = Image.open(requests.get(urllogo, stream=True).raw)
+            return image2
 
-        if choix_modele ==models[0]:
-            #from scipy.spatial.distance import cdist
-            #from sklearn.cluster import KMeans
-            # Liste des nombre de clusters
-                    
-            range_n_clusters = np.arange(2,10)
-                    
-            # Initialisation de la liste de distortions
-            distortions = []
-            #from sklearn.cluster import KMeans
-            # Liste des nombre de clusters
-            #from scipy.spatial.distance import cdist        
-            range_n_clusters = np.arange(2,10)
-                    
-            # Initialisation de la liste de distortions
-            distortions = []
-            
-            @st.cache(persist=True, suppress_st_warning=True)
-            def cluster():
-                # Calcul des distortions pour les différents modèles
-                for n_clusters in range_n_clusters:
-                    # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
-                    cluster = KMeans(n_clusters = n_clusters)
-                # Apprentissage des données suivant le cluster construit ci-dessus
-                    cluster.fit(items)
-                # Ajout de la nouvelle distortion à la liste des données
-                    distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
-                    
-                # Courbe du coude
-                fig_coude, ax = plt.subplots()
-                #plt.figure(figsize=(5, 6))
-                plt.plot(range_n_clusters, distortions)
-                plt.xlabel('Nombre de Clusters K')
-                plt.ylabel('Distortion (WSS/TSS)')
-                plt.title('Méthode du coude affichant le nombre de clusters optimal')
-                    
-                return st.pyplot(fig_coude)
-                    
-            cluster()
+        image = img2()
 
-    main2()
+        st.image(image, width=None)    
     
-    def main3():
+        @st.cache
+        def img3():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_clusters.PNG"
+            image3 = Image.open(requests.get(urllogo, stream=True).raw)
+            return image3
     
-        if choix_modele==models[1]:
+        image = img3()
+    
+        st.image(image, width=None)
+        
+        
+        st.write("""
+                 Le modèle a créé 4 clusters qui semblent alignés sur l'axe de la variable prix'
+                 
+                 
+                Calcul de la moyenne des variables par cluster:
+                 """)
+        @st.cache
+        def img4():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_variables.PNG"
+            image4 = Image.open(requests.get(urllogo, stream=True).raw)
+            return image4
+    
+        image = img4()
+    
+        st.image(image, width=None)        
             
-            @st.cache
-            def test(a,b):
-                c = a + b
-                return c
-            a=5
-            b=7
-            res=test(a,b)
-            
-            st.write("""test = """, res)
     
-    main3()
+        st.write("""
+                 ● Le modèle a principalement créé les clusters sur la différence de prix entre les
+                    articles, ce qui est cohérent avec la représentation graphique qui regroupe les points
+                    le long de l’axe de prix.
+    
+                ● En revanche, nous ne connaissons pas la nature des produits sur le site, nous ne
+                    pouvons pas savoir si ce classement est pertinent ou non.
+    
+                ● La segmentation obtenue par apprentissage supervisé utilise la variable prix plus que
+                    les variables de performances de l’article (nombre de vues, mises au panier,
+                    transaction) tels qu’utilisés dans le scoring
+                 
+                 """)      
+    
+    
+    if choix_modele==models[1]:
+        #@st.cache 
+        
+        st.write(""" ici est tésté un modèle mixte, avec une classification ascendante hierarchique pour connaitre le nombre de clusters, suivi d'un k means""")
+        
+        
+        
+        
+        @st.cache
+        def img():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/graph_dendo.PNG"
+            image = Image.open(requests.get(urllogo, stream=True).raw)
+            return image
+
+        image = img()
+
+        st.image(image, width=None)
+        
+        st.write("""
+             Le dendogramme laisse suggérer qu'il y a 3 clusters
+             """)
+         
+        @st.cache
+        def img2():
+            urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_cluster3.PNG"
+            image2 = Image.open(requests.get(urllogo, stream=True).raw)
+            return image2
+
+        image = img2()
+
+        st.image(image, width=None)    
+        
+        st.error("""Nous voyons dans le graphique principalement 2 clusters au lieu de 3, le troisième cluster ne contient qu'un point, ce modèle n'est donc pas fonctionnel""")
