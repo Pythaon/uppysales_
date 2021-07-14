@@ -358,7 +358,7 @@ if page =='3️⃣ Clustering':
     
     @st.cache
     def img():
-        urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/Graph_coude.PNG"
+        urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/seg_items.PNG"
         image = Image.open(requests.get(urllogo, stream=True).raw)
         return image
     
