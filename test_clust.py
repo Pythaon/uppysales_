@@ -351,6 +351,10 @@ if page == '2️⃣ Segmentation visiteurs':
 if page =='3️⃣ Clustering':
     
     st.header("**3️⃣ Clustering**")
+    
+    st.write("""
+    Grace à une adaptation du scoring aux items, les produits du jeu de données ont pu être segmentés en focntion de leur attractivité
+    """)
     st.markdown("""
             Nous allons tester les modèles suivants:
                 
