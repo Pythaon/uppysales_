@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jul 14 13:45:23 2021
-
-@author: Utilisateur
-"""
-
-# -*- coding: utf-8 -*-
-"""
 Created on Thu Jul  8 19:18:48 2021
 @author: Céline & Thao 
 """
@@ -373,6 +366,9 @@ if page =='3️⃣ Clustering':
     image = img()
 
     st.image(image, width=None)
+        
+    
+    
     
     
     st.markdown("""
