@@ -377,36 +377,36 @@ if page =='3️⃣ Clustering':
 
         if choix_modele ==models[0]:
             
-                @st.cache(persist=True, suppress_st_warning=True)
-                def cluster(range_n_clusters):
-                    #from scipy.spatial.distance import cdist
-                    #from sklearn.cluster import KMeans
-                    # Liste des nombre de clusters
+            @st.cache(persist=True, suppress_st_warning=True)
+            def cluster(range_n_clusters):
+                #from scipy.spatial.distance import cdist
+                #from sklearn.cluster import KMeans
+                # Liste des nombre de clusters
                     
-                    range_n_clusters = np.arange(2,10)
+                range_n_clusters = np.arange(2,10)
                     
-                    # Initialisation de la liste de distortions
-                    distortions = []
+                # Initialisation de la liste de distortions
+                distortions = []
                 
                 
-                    # Calcul des distortions pour les différents modèles
-                    for n_clusters in range_n_clusters:
-                        # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
-                        cluster = KMeans(n_clusters = n_clusters)
-                        # Apprentissage des données suivant le cluster construit ci-dessus
-                        cluster.fit(items)
-                        # Ajout de la nouvelle distortion à la liste des données
-                        distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
+                # Calcul des distortions pour les différents modèles
+                for n_clusters in range_n_clusters:
+                    # Initialisation d'un cluster ayant un pour nombre de clusters n_clusters
+                    cluster = KMeans(n_clusters = n_clusters)
+                # Apprentissage des données suivant le cluster construit ci-dessus
+                    cluster.fit(items)
+                # Ajout de la nouvelle distortion à la liste des données
+                    distortions.append(sum(np.min(cdist(items_sc, cluster.cluster_centers_, 'euclidean'), axis=1)) / np.size(items, axis = 0))
                     
-                    # Courbe du coude
-                    fig_coude, ax = plt.subplots()
-                    #plt.figure(figsize=(5, 6))
-                    plt.plot(range_n_clusters, distortions)
-                    plt.xlabel('Nombre de Clusters K')
-                    plt.ylabel('Distortion (WSS/TSS)')
-                    plt.title('Méthode du coude affichant le nombre de clusters optimal')
+                # Courbe du coude
+                fig_coude, ax = plt.subplots()
+                #plt.figure(figsize=(5, 6))
+                plt.plot(range_n_clusters, distortions)
+                plt.xlabel('Nombre de Clusters K')
+                plt.ylabel('Distortion (WSS/TSS)')
+                plt.title('Méthode du coude affichant le nombre de clusters optimal')
                     
-                    st.pyplot(fig_coude)
+            st.pyplot(fig_coude)
                     
             cluster()
 
