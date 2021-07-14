@@ -37,7 +37,7 @@ st.set_page_config(page_title="UpPySales App",page_icon="🎯",layout="centered"
 page = st.sidebar.radio(label="Menu", options = ['1️⃣ Présentation',  '2️⃣ Segmentation visiteurs', '3️⃣ Clustering'])
 
 ### LOGO
-@st.cache
+@st.cache(persist=True)
 def img():
     urllogo = "https://raw.githubusercontent.com/Pythaon/uppysales_/main/uppysales_s.png"
     image = Image.open(requests.get(urllogo, stream=True).raw)
@@ -50,7 +50,7 @@ st.image(image, width=None)
 st.title("""**Analyse de l'activité de e-commerce**""")
 
 ##------- IMPORT DES DATASETS
-@st.cache
+@st.cache(persist=True)
 def load_data1():
     url_events="http://spowls.net:449/projet/datasets/events.csv"
     s_events=requests.get(url_events).content 
@@ -58,7 +58,7 @@ def load_data1():
     return events
 
 ### Df_all sample random 30% 
-@st.cache
+@st.cache(persist=True)
 def load_data2():
     url_df_all="http://spowls.net:449/projet/datasets/df_all_sample30.csv"
     s_df_all=requests.get(url_df_all).content 
@@ -359,7 +359,7 @@ if page =='3️⃣ Clustering':
     items = items.drop(['categoryid', 'parentid', 'itemid', 'event'], axis = 1)
             
     # Normalisation
-    from sklearn.preprocessing import MinMaxScaler
+    #from sklearn.preprocessing import MinMaxScaler
     scaler = MinMaxScaler()
     items_sc = scaler.fit(items)
     items_sc = scaler.transform(items)
