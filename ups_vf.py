@@ -389,7 +389,7 @@ if page =='3️⃣ Clustering':
 
         image = img()
 
-        st.image(image, width=None)
+        st.image(image, width=500)
         
         st.write("""
              Le coude n'est pas très franc mais apparait autour du nombre de cluster = 4
@@ -403,7 +403,7 @@ if page =='3️⃣ Clustering':
 
         image = img2()
 
-        st.image(image, width=None)    
+        st.image(image, width=200)    
     
         @st.cache
         def img3():
@@ -413,7 +413,7 @@ if page =='3️⃣ Clustering':
     
         image = img3()
     
-        st.image(image, width=None)
+        st.image(image, width=500)
         
         
         st.write("""
@@ -430,7 +430,7 @@ if page =='3️⃣ Clustering':
     
         image = img4()
     
-        st.image(image, width=None)        
+        st.image(image, width=600)        
             
     
         st.write("""
@@ -464,7 +464,7 @@ if page =='3️⃣ Clustering':
 
         image = img()
 
-        st.image(image, width=None)
+        st.image(image, width=600)
         
         st.write("""
              Le dendogramme laisse suggérer qu'il y a 3 clusters
@@ -478,6 +478,6 @@ if page =='3️⃣ Clustering':
 
         image = img2()
 
-        st.image(image, width=None)    
+        st.image(image, width=500)    
         
         st.error("""Nous voyons dans le graphique principalement 2 clusters au lieu de 3, le troisième cluster ne contient qu'un point, ce modèle n'est donc pas fonctionnel""")
