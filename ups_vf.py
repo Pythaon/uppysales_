@@ -283,7 +283,7 @@ if page == '2️⃣ Segmentation visiteurs':
                 
                 **> Intéressés et curieux:**
                 
-                sont des visiteurs qui ont parcouru le site, les interessés ayant fait deux actions ou plus. Ceci montre que 14% des visiteurs du site étaient intéressés par ce qui s'y vend mais non pas été jusqu'à la transaction. Ces clients sont un vivier potentiel de conversion.
+                sont des visiteurs qui ont parcouru le site, les interessés ayant fait deux actions ou plus. Ceci montre que 18% des visiteurs du site étaient intéressés par ce qui s'y vend mais non pas été jusqu'à la transaction. Ces clients sont un vivier potentiel de conversion.
                 
                 Analyse complémentaire: quels sont les attribus des produits consultés qui ont pu limiter la conversion?
                          """)
