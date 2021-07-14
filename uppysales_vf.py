@@ -377,7 +377,7 @@ if page =='3️⃣ Clustering':
 
         if choix_modele ==models[0]:
             
-            @st.cache(hash_funcs={builtins.function: my_hash_func})
+            @st.cache
             def cluster():
                 from scipy.spatial.distance import cdist
                 from sklearn.cluster import KMeans
