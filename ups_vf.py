@@ -363,7 +363,7 @@ if page =='3️⃣ Clustering':
         return image
     
     image = img()
-    st.image(image, width=None)
+    st.image(image, width=600)
     
     
     st.markdown("""
