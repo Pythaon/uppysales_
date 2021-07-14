@@ -269,17 +269,17 @@ if page == '2️⃣ Segmentation visiteurs':
             
                 Elle permet d'observer néamoins qu'on peut trouver 3 groupes de visiteurs sans achat :
                 
-                **> Non intéressé:**
+                **###> Non intéressé:**
                 
                 cette catégorie la plus importante concerne les visiteurs qui sont entrés sur le site et sortis immédiatement (pas de transaction, nombre d'action =1)
                 
-                - soit les clients sont entrés par erreur, ce qui peut suggérer que le site est mal référencé remonte en résultat dans une recherche autre que celle de l'objet du site.
+                **- soit les clients sont entrés par erreur, ce qui peut suggérer que le site est mal référencé remonte en résultat dans une recherche autre que celle de l'objet du site.**
                 
-                - Soit les clients ont voulu voir un article qui n'est pas disponible et sont ressortis immédiatement.
+                **- Soit les clients ont voulu voir un article qui n'est pas disponible et sont ressortis immédiatement.**
                 
                 Analyse complémentaire: parmis les visites des non intéressés quel % concernait des produits non disponibles?
                 
-                **> Intéressés et curieux:**
+                **###> Intéressés et curieux:**
                 
                 sont des visiteurs qui ont parcouru le site, les interessés ayant fait deux actions ou plus. Ceci montre que 18% des visiteurs du site étaient intéressés par ce qui s'y vend mais non pas été jusqu'à la transaction. Ces clients sont un vivier potentiel de conversion.
                 
