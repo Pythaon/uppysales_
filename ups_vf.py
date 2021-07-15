@@ -327,7 +327,7 @@ if page == '2️⃣ Segmentation visiteurs':
             st.write("""
                     **40%** des acheteurs sont des acheteurs récents, les identifier permet de pouvoir leur adresser une campagne de bienvenue et de remerciement. Nous pouvons également tenter de les fidéliser.
                     
-                    **17%** des acheteurs sont des "champions", en terme de chiffre d'affaires, mais attention 7% d'entre eux sont en risque car n'ont pas eu d'activité récente.
+                    **17%** des acheteurs sont des "champions", en terme de chiffre d'affaires, mais attention **5% d'entre eux sont en risque** car n'ont pas eu d'activité récente.
                     La segmentation "champion" appelle a un traitement plus dédié de ce segment de clientèle.
                     
                     **20%** des acheteurs sont "à retenir", leur chiffre d'affaires et de moyen à faible, mais ils no'nt pas eu d'activité récente, ils sont à relancer.
